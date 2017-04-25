@@ -1,0 +1,7 @@
+// Font styles
+
+@mixin font-settings($size, $weight, $color: inherit) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}

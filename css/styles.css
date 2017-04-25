@@ -1,69 +1,22 @@
-/* ================================
-    Base Element Styles
-   ================================ */
-* {
-  box-sizing: border-box;
-}
-
+/* line 3, ../scss/utils/_extends.scss */
 body {
-  color: #222;
-  font-size: 1rem;
-  line-height: 1.4;
-}
+  font-family: "Montserrat", sans-serif; }
 
+/* line 5, ../scss/base/_base.scss */
+* {
+  margin: 0;
+  padding: 0; }
 
-/* ================================
-    Base Layout Styles
-   ================================ */
+/* line 10, ../scss/base/_base.scss */
+*, *::before, *::after {
+  box-sizing: border-box; }
 
-/* --------- Navigation -------- */
+/* line 14, ../scss/base/_base.scss */
+html {
+  height: 100%; }
 
+/* line 18, ../scss/base/_base.scss */
+body {
+  height: 100%; }
 
-
-/* ----- Layout Containers ----- */
-
-
-
-/* ------- Page Elements ------- */
-
-
-
-/* ================================
-    Media Queries
-   ================================ */
-
-@media only screen and (min-width: 768px) {
-  
-  
-}
-
-
-
-/* ================================
-    Helper Classes
-   ================================ */
-
-.clearfix:before,
-.clearfix:after {
-    content: " ";
-    display: table;
-}
-
-.clearfix:after {
-    clear: both;
-}
-
-.clearfix {
-    *zoom: 1;
-}
-
-/* ================================
-    Print Styles
-   ================================ */
-
-@media print {
-
-    
-}
-
-
+/*# sourceMappingURL=styles.css.map */
