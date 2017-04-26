@@ -60,9 +60,7 @@ let cardHtml = (coverUrl, albumName) => {
           <img class="card-image" 
           src="${coverUrl}"
           alt="${albumName} album cover">	
-          <figcaption class="card-name">
-            ${albumName}
-          </figcaption>
+          <figcaption class="card-name">${albumName}</figcaption>
         </figure>
         <div class="card-overlay"></div>
       </li>`;

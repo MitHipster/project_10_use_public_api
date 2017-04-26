@@ -1,3 +1,20 @@
-// Font stacks, sizes, and weights
+// Descriptive color variables
+$pistachio: #98c653;
+$sand: #bdce80;
+$isabelline: #efeeea;
+$silver-pink: #c6b9ab;
+$light-pink: #e86171;
 
-$stack-montserrat    : 'Montserrat', sans-serif;
+// Functional color variables
+
+$color-bg-body: $isabelline;
+$color-bg-card: lighten($silver-pink, 15%);
+
+// Font stacks
+
+$stack-montserrat: 'Montserrat', sans-serif;
+
+// Margin and padding
+
+$edge-sm: 10px;
+$edge-lg: 20px;

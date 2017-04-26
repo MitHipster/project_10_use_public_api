@@ -17,6 +17,30 @@ html {
 
 /* line 18, ../scss/base/_base.scss */
 body {
-  height: 100%; }
+  height: 100%;
+  background-color: #efeeea; }
+
+/* line 24, ../scss/base/_base.scss */
+ul {
+  list-style: none; }
+
+/* line 28, ../scss/base/_base.scss */
+figure {
+  margin: 0; }
+
+/* line 32, ../scss/base/_base.scss */
+img {
+  max-width: 100%; }
+
+/* line 7, ../scss/layout/_containers.scss */
+.outer-container {
+  min-height: 100%;
+  padding: 10px; }
+
+/* line 5, ../scss/layout/_cards.scss */
+li.card {
+  background-color: #e5dfd9;
+  padding: 10px;
+  margin-bottom: 20px; }
 
 /*# sourceMappingURL=styles.css.map */
