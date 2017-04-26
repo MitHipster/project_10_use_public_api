@@ -2,7 +2,6 @@
 /*global window, console, $, jQuery, alert*/
 
 const $cardContainer =  $('.card-container');
-let $moreInfo = $();
 let searchForArtist = 'the who';
 
 // AJAX request to download data from Spotify
@@ -34,12 +33,12 @@ $.ajax({
       // Call function to generate HTML for the cards and append to the card container ul
       $cardContainer.append(cardHtml(coverUrl, albumName, albumId));
     }); // end each album iterator
-    $moreInfo = $('.btn-info');
   } // end success callback
-});
+}); // end AJAX request
 
-// Function to generate the card HTML with album image and name. Plus insert album ID as a data attribute for the More Info link
+// Function to generate the card HTML with album image and name, plus insert album ID as a data attribute in the More Info link
 let cardHtml = (coverUrl, albumName, albumId) => {
+  // Create the HTML using a template literal
   let html =
       `<li class="card">
         <figure>
@@ -59,9 +58,9 @@ let cardHtml = (coverUrl, albumName, albumId) => {
 }; // end cardHtml function
 
 // Click function to get album ID from More Info link data attribute and pass it as a parameter in an AJAX request
-$moreInfo.click( function (e) {
+$cardContainer.on('click', '.btn-info', function (e) {
   e.preventDefault();
-  console.log('Clicked');
+
   let albumId = $(this).data('id');
   
   // AJAX request to download detailed album information from Spotify
@@ -75,5 +74,5 @@ $moreInfo.click( function (e) {
       console.log(results);
 
     } // end success callback function
-  });
-});
+  }); // end AJAX request
+}); // .btn-info click function

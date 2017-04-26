@@ -55,7 +55,7 @@ li.card {
   /* line 10, ../scss/layout/_cards.scss */
   li.card .card-name {
     line-height: 1.4rem;
-    border-top: 2px solid #93315c;
+    border-top: 2px solid #a9386f;
     margin-top: 15px;
     padding-top: 5px; }
 
@@ -79,14 +79,14 @@ li.card {
   /* line 32, ../scss/layout/_cards.scss */
   .image-overlay-container .btn-info {
     text-transform: uppercase;
-    color: #b5cf92;
-    border: solid 2px #b5cf92;
+    color: #a8d57b;
+    border: solid 2px #a8d57b;
     padding: 12px 24px;
     opacity: 0;
     transition: opacity 0.4s ease, background-color 0.4s ease; }
     /* line 39, ../scss/layout/_cards.scss */
     .image-overlay-container .btn-info:hover {
-      background-color: rgba(88, 136, 22, 0.8); }
+      background-color: rgba(65, 88, 71, 0.8); }
   /* line 43, ../scss/layout/_cards.scss */
   .image-overlay-container:hover .btn-info {
     opacity: 1; }
