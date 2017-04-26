@@ -1,0 +1,19 @@
+//============================================================
+// Header Styles
+//============================================================
+
+//------------- Header -------------
+
+header {
+  @include display-flex($justify: flex-start, $align: center);
+  height: 72px;
+  background-color: $color-text-light;
+  #logo-spotify {
+    width: 72px;
+    padding: 8px;
+  }
+  #title {
+    @include font-settings(1.5rem, 500)
+  }
+}
+

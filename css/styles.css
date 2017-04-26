@@ -19,7 +19,7 @@ html {
 body {
   font-size: 1rem;
   font-weight: 300;
-  color: #e7eae9;
+  color: #545454;
   height: 100%;
   background-color: #1e2e35; }
 
@@ -28,14 +28,16 @@ ul {
   list-style: none; }
 
 /* line 29, ../scss/base/_base.scss */
-figure {
+figure,
+h1 {
   margin: 0; }
 
-/* line 33, ../scss/base/_base.scss */
+/* line 34, ../scss/base/_base.scss */
 img {
-  max-width: 100%; }
+  max-width: 100%;
+  max-height: 100%; }
 
-/* line 37, ../scss/base/_base.scss */
+/* line 39, ../scss/base/_base.scss */
 a {
   text-decoration: none; }
 
@@ -44,12 +46,29 @@ a {
   min-height: 100%;
   padding: 15px; }
 
+/* line 7, ../scss/layout/_header.scss */
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 72px;
+  background-color: #e7eae9; }
+  /* line 11, ../scss/layout/_header.scss */
+  header #logo-spotify {
+    width: 72px;
+    padding: 8px; }
+  /* line 15, ../scss/layout/_header.scss */
+  header #title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: inherit; }
+
 /* line 5, ../scss/layout/_cards.scss */
 li.card {
   width: 290px;
   font-size: 0.9rem;
   font-weight: 400;
-  color: inherit;
+  color: #e7eae9;
   padding: 15px;
   margin-bottom: 15px; }
   /* line 10, ../scss/layout/_cards.scss */
