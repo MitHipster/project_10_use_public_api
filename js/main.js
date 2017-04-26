@@ -57,12 +57,14 @@ let cardHtml = (coverUrl, albumName) => {
   let html =
       `<li class="card">
         <figure>
-          <img class="card-image" 
-          src="${coverUrl}"
-          alt="${albumName} album cover">	
+          <div class="image-overlay-container">
+            <img class="card-image"
+            src="${coverUrl}"
+            alt="${albumName} album cover">
+            <div class="btn-overlay"><a class="btn-info" href="#">More Info</a></div>
+          </div>
           <figcaption class="card-name">${albumName}</figcaption>
         </figure>
-        <div class="card-overlay"></div>
       </li>`;
   console.log(html);
   return html;

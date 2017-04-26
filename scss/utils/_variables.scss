@@ -1,14 +1,14 @@
-// Descriptive color variables
-$pistachio: #98c653;
-$sand: #bdce80;
-$isabelline: #efeeea;
-$silver-pink: #c6b9ab;
-$light-pink: #e86171;
-
 // Functional color variables
 
-$color-bg-body: $isabelline;
-$color-bg-card: lighten($silver-pink, 15%);
+$color-text-dark: #2b2b2b;
+$color-text-light: #e7eae9;
+
+$color-bg-body: #1e2e35;
+
+$color-border: #93315c;
+
+$color-btn: #b5cf92;
+$color-btn-hover: #588816;
 
 // Font stacks
 
@@ -16,5 +16,5 @@ $stack-montserrat: 'Montserrat', sans-serif;
 
 // Margin and padding
 
-$edge-sm: 10px;
+$edge-sm: 15px;
 $edge-lg: 20px;

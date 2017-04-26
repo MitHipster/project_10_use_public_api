@@ -17,6 +17,7 @@ html {
 
 body {
   @extend %font-primary;
+  @include font-settings($color: $color-text-light);
   height: 100%;
   background-color: $color-bg-body;
 }
@@ -31,4 +32,8 @@ figure {
 
 img {
   max-width: 100%
+}
+
+a {
+  text-decoration: none;
 }
