@@ -26,17 +26,12 @@ $searchBtn.on('click', function () {
       console.log(results);
       // Iterate over JSON search results to create a card that holds the album cover and title for each array item
       $.each(results.albums.items, (i, album) => {
-        let coverUrl = '';
+        // Get medium-sized image with height and width around 300px
+        let coverUrl = album.images[1].url;
         let albumName = album.name;
-        let artistName = '';
         let albumId = album.id;
-        // Target image with a height of less than or equal to 300px
-        $.each(album.images, (i, image) => {
-          if (image.height <= 300) {
-            coverUrl = image.url;
-            return false;
-          }
-        });// end each image iterator
+        let artistName = '';
+        
         $.each(album.artists, (i, artist) => {
           if (i <= 2) {
             artistName += artist.name + ' / ';

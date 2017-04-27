@@ -5,9 +5,14 @@
 //------------ Footer -------------
 
 footer {
-  @include display-flex($justify: flex-end, $align: center);
+  @include display-flex($justify: space-between, $align: center);
   height: 72px;
-  text-align: right;
   background-color: $color-bg-header;
-  padding-right: $edge-sm - 5px;
+  padding: 0 $edge-sm - 5px;
+  .copyright-info {
+    text-align: right;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
 }

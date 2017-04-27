@@ -4,7 +4,7 @@
 
 li.card {
   width: 320px - ($edge-sm * 2);
-  @include font-settings(0.9rem, 400, $color-text-light);
+  @include font-settings($weight: 400, $color: $color-text-light);
   padding: $edge-sm;
   margin-bottom: $edge-sm;
   .card-name {
@@ -15,7 +15,7 @@ li.card {
   }
   .card-artist {
     line-height: 1rem;
-    @include font-settings(0.8rem, 300, $color-text-gray);
+    @include font-settings(0.9rem, 300, $color-text-gray);
     padding-top: $edge-sm / 2;
   }
 }

@@ -43,7 +43,8 @@ img {
 
 /* line 39, ../scss/base/_base.scss */
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: #545454; }
 
 /* line 7, ../scss/layout/_containers.scss */
 .outer-container {
@@ -112,7 +113,7 @@ header {
 /* line 5, ../scss/layout/_cards.scss */
 li.card {
   width: 290px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
   color: #f1f3f3;
   padding: 15px;
@@ -126,7 +127,7 @@ li.card {
   /* line 16, ../scss/layout/_cards.scss */
   li.card .card-artist {
     line-height: 1rem;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 300;
     color: #b3bcb8;
     padding-top: 7.5px; }
@@ -166,11 +167,16 @@ li.card {
 /* line 7, ../scss/layout/_footer.scss */
 footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   height: 72px;
-  text-align: right;
   background-color: #f1f3f3;
-  padding-right: 10px; }
+  padding: 0 10px; }
+  /* line 12, ../scss/layout/_footer.scss */
+  footer .copyright-info {
+    text-align: right; }
+  /* line 15, ../scss/layout/_footer.scss */
+  footer a:hover {
+    text-decoration: underline; }
 
 /*# sourceMappingURL=styles.css.map */
