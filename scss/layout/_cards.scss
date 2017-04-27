@@ -8,14 +8,19 @@ li.card {
   padding: $edge-sm;
   margin-bottom: $edge-sm;
   .card-name {
-    line-height: 1.4rem;
+    line-height: 1.1rem;
     border-top: 2px solid $color-border;
     margin-top: $edge-sm;
-    padding-top: $edge-sm / 3;
+    padding-top: $edge-sm / 2;
+  }
+  .card-artist {
+    line-height: 1rem;
+    @include font-settings(0.8rem, 300);
+    padding-top: $edge-sm / 2;
   }
 }
 
-.image-overlay-container {
+.image-overlay {
   position: relative;
   .btn-overlay {
     @include display-flex($justify: center, $align: center);
