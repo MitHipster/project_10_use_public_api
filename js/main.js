@@ -78,7 +78,11 @@ let cardHtml = (coverUrl, albumName, artistName, albumId) => {
 $cardContainer.on('click', '.btn-info', function (e) {
   e.preventDefault();
 
+  // Assign album ID variable to the value data-id attribute value
   let albumId = $(this).data('id');
+  // Store album and artist names found in the nearest ancestor
+  let albumName = $(this).closest('figure').find('.card-name').text();
+  let artistName = $(this).closest('figure').find('.card-artist').text();
   
   // AJAX request to retrieve detailed album information from Spotify
   $.ajax({
@@ -86,6 +90,10 @@ $cardContainer.on('click', '.btn-info', function (e) {
 
     success: (results) => {
       console.log(results);
+      let type = results.album_type;
+      let label = results.label;
+      let releaseDate = results.release_date;
+      console.log(type);
 
     } // end success callback function
   }); // end AJAX request

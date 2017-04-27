@@ -7,7 +7,7 @@
 #search {
   height: 40px;
   width: 75%;
-  max-width: 375px;
+  max-width: 400px;
   @include font-settings(1rem, 300, $color-text-dark);
   background-color: $color-bg-header;  
   outline: none;
@@ -34,6 +34,6 @@
   transition: box-shadow .4s ease-out, background-color .4s ease-out;
   @extend %focus-state;
   &:hover {
-    background-color: lighten($color-bg-button, 5%);
+    background-color: lighten($color-bg-button, 10%);
   }
 }

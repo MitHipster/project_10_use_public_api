@@ -79,7 +79,7 @@ header {
 #search {
   height: 40px;
   width: 75%;
-  max-width: 375px;
+  max-width: 400px;
   font-size: 1rem;
   font-weight: 300;
   color: #545454;
@@ -107,7 +107,7 @@ header {
   transition: box-shadow .4s ease-out, background-color .4s ease-out; }
   /* line 36, ../scss/layout/_search.scss */
   #btn-search:hover {
-    background-color: #85c248; }
+    background-color: #92c95b; }
 
 /* line 5, ../scss/layout/_cards.scss */
 li.card {
@@ -128,7 +128,7 @@ li.card {
     line-height: 1rem;
     font-size: 0.8rem;
     font-weight: 300;
-    color: inherit;
+    color: #b3bcb8;
     padding-top: 7.5px; }
 
 /* line 23, ../scss/layout/_cards.scss */
