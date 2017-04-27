@@ -2,12 +2,12 @@
 // Header Styles
 //============================================================
 
-//------------- Header -------------
+//------------ Header -------------
 
 header {
   @include display-flex($justify: flex-start, $align: center);
   height: 72px;
-  background-color: $color-text-light;
+  background-color: $color-bg-header;
   #logo-spotify {
     width: 72px;
     padding: 8px;

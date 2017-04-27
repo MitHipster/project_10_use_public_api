@@ -52,7 +52,7 @@ header {
   justify-content: flex-start;
   align-items: center;
   height: 72px;
-  background-color: #e7eae9; }
+  background-color: #f1f3f3; }
   /* line 11, ../scss/layout/_header.scss */
   header #logo-spotify {
     width: 72px;
@@ -68,7 +68,7 @@ li.card {
   width: 290px;
   font-size: 0.9rem;
   font-weight: 400;
-  color: #e7eae9;
+  color: #f1f3f3;
   padding: 15px;
   margin-bottom: 15px; }
   /* line 10, ../scss/layout/_cards.scss */
@@ -109,5 +109,15 @@ li.card {
   /* line 43, ../scss/layout/_cards.scss */
   .image-overlay-container:hover .btn-info {
     opacity: 1; }
+
+/* line 7, ../scss/layout/_footer.scss */
+footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 72px;
+  text-align: right;
+  background-color: #f1f3f3;
+  padding-right: 10px; }
 
 /*# sourceMappingURL=styles.css.map */

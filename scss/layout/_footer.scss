@@ -1,0 +1,13 @@
+//============================================================
+// Footer Styles
+//============================================================
+
+//------------ Footer -------------
+
+footer {
+  @include display-flex($justify: flex-end, $align: center);
+  height: 72px;
+  text-align: right;
+  background-color: $color-bg-header;
+  padding-right: $edge-sm - 5px;
+}
