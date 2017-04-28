@@ -28,6 +28,16 @@ $searchBtn.on('click', function () {
         albumList = albumIdList(results.albums.items);
         // Clear search field
         $searchField.val('');
+        
+        $.ajax({
+          url: 'https://api.spotify.com/v1/albums/',
+          data: {
+            ids: albumList
+          },
+          success: (results) => {
+            console.log(results);
+          } // end success callback function
+        }); // end AJAX request
       // else diplay a message that no match was found
       } else {
         $cardContainer.append('<p id="no-match">No match found. Please revise your search term.</p>');
@@ -99,26 +109,4 @@ let cardHtml = (i, coverUrl, albumName, artistName) => {
 $cardContainer.on('click', '.btn-info', function (e) {
   e.preventDefault();
 
-  // Assign album ID variable to the value data-id attribute value
-  let albumId = $(this).data('id');
-  // Store album and artist names found in the nearest ancestor
-  let albumName = $(this).closest('figure').find('.card-name').text();
-  let artistName = $(this).closest('figure').find('.card-artist').text();
-  
-  // AJAX request to retrieve detailed album information from Spotify
-  $.ajax({
-    url: 'https://api.spotify.com/v1/albums/',
-    data: {
-      ids: ''
-    },
-
-    success: (results) => {
-      console.log(results);
-//      let type = results.album_type;
-//      let label = results.label;
-//      let releaseDate = results.release_date;
-//      console.log(type);
-
-    } // end success callback function
-  }); // end AJAX request
 }); // .btn-info click function
