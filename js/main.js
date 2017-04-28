@@ -4,6 +4,7 @@
 const $cardContainer =  $('.card-container');
 const $searchField = $('#search');
 const $searchBtn = $('#btn-search');
+let lgDynamicEl = []; // Dynamic LightGallery dataset
 
 // Click function to submit search term to Spotify API via AJAX request
 $searchBtn.on('click', function () {
@@ -36,6 +37,7 @@ $searchBtn.on('click', function () {
           },
           success: (results) => {
             console.log(results);
+            albumObjArray(results.albums);
           } // end success callback function
         }); // end AJAX request
       // else diplay a message that no match was found
@@ -105,8 +107,35 @@ let cardHtml = (i, coverUrl, albumName, artistName) => {
   return html;
 }; // end cardHtml function
 
-// Click function to get album ID from More Info link data attribute and pass it as a parameter in an AJAX request
+// Click function on More Info button collection to call LightGallery lightbox plugin
 $cardContainer.on('click', '.btn-info', function (e) {
   e.preventDefault();
-
+  // Get index data from button to set starting point for lightbox
+  let i = $(this).data('index');
+  console.log(i);
+  // LightGallery plugin
+  $(this).lightGallery({
+    dynamic: true,
+    // Dynamic dataset base on search results
+    dynamicEl: lgDynamicEl,
+    addClass: 'lg-custom',
+    index: i,
+    mode: 'lg-fade',
+    hideBarsDelay: 4000,
+    getCaptionFromTitleOrAlt: false,
+    download: false
+  }); // end LightGallery constructor
 }); // .btn-info click function
+
+// Function to create an array of album objects for use as dynamic LightGallery dataset
+let albumObjArray = (albums) => {
+  let obj = {};
+  $.each(albums, (i, album) => {
+    let coverUrl = album.images[1].url;
+    obj = {
+      'src': coverUrl
+    };
+    lgDynamicEl.push(obj);
+  }); // end each album iterator
+  console.log(lgDynamicEl);
+}; // end albumObjArray function
