@@ -16,3 +16,9 @@
   height: 60px;
   background-color: $color-bg-search;
 }
+
+.card-container {
+  #no-match {
+    color: $color-text-gray;
+  }
+}

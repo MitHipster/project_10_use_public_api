@@ -59,6 +59,10 @@ a {
   height: 60px;
   background-color: #dde1df; }
 
+/* line 21, ../scss/layout/_containers.scss */
+.card-container #no-match {
+  color: #b3bcb8; }
+
 /* line 7, ../scss/layout/_header.scss */
 header {
   display: flex;

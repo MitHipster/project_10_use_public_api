@@ -9,46 +9,68 @@ const $searchBtn = $('#btn-search');
 $searchBtn.on('click', function () {
   let searchValue = $searchField.val();
   $cardContainer.empty();
-  $searchField.val('');
   // AJAX request to retrieve data from Spotify
   $.ajax({
     url: 'https://api.spotify.com/v1/search',
     data: {
       q: `artist:"${searchValue}"`,
       type: 'album',
-      market: 'US',
-      limit: 24
+      market: 'US'
     },
-//    beforeSend: function(jqXHR, settings) {
-//      console.log(settings.url);
-//    },
     success: (results) => {
+      let albumList = '';
       console.log(results);
-      // Iterate over JSON search results to create a card that holds the album cover and title for each array item
-      $.each(results.albums.items, (i, album) => {
-        // Get medium-sized image with height and width around 300px
-        let coverUrl = album.images[1].url;
-        let albumName = album.name;
-        let albumId = album.id;
-        let artistName = '';
-        
-        $.each(album.artists, (i, artist) => {
-          if (i <= 2) {
-            artistName += artist.name + ' / ';
-          } else {
-            return false;
-          }
-        });// end each image iterator
-        artistName = artistName.slice(0, -3);
-        // Call function to generate HTML for the cards and append to the card container ul
-        $cardContainer.append(cardHtml(coverUrl, albumName, artistName, albumId));
-      }); // end each album iterator
+      // If no albums are returned, show no results found message
+      if (results.albums.items.length !== 0) {
+        // Call function to create album cards
+        albumResults(results.albums.items);
+        // Call function to generate album list for subsequent AJAX request
+        albumList = albumIdList(results.albums.items);
+        // Clear search field
+        $searchField.val('');
+      // else diplay a message that no match was found
+      } else {
+        $cardContainer.append('<p id="no-match">No match found. Please revise your search term.</p>');
+      }
     } // end success callback
   }); // end AJAX request
 });
 
+// Iterate over search results to create a card that holds the album information for each object item
+let albumResults = (albums) => {
+  
+  $.each(albums, (i, album) => {
+    // Get medium-sized image with height and width ~300px
+    let coverUrl = album.images[1].url;
+    let albumName = album.name;
+    let artistName = '';
+
+    $.each(album.artists, (i, artist) => {
+      if (i <= 2) {
+        artistName += artist.name + ' / ';
+      } else {
+        return false;
+      }
+    });// end each image iterator
+    artistName = artistName.slice(0, -3);
+    // Call function to generate HTML for the cards and append to the card container ul
+    $cardContainer.append(cardHtml(coverUrl, albumName, artistName));
+  }); // end each album iterator
+}; // end albumResults function
+
+//Build a comma-separated list of the album IDs for subsequent AJAX request
+let albumIdList = (albums) => {
+  let albumList = '';
+  
+  $.each(albums, (i, album) => {
+    albumList += (album.id + ',');
+  }); // end each album iterator
+  // Remove last comma and retun list
+  return albumList.slice(0, -1);
+}; // end albumIdList function
+
 // Function to generate the card HTML with album image and name, plus insert album ID as a data attribute in the More Info link
-let cardHtml = (coverUrl, albumName, artistName, albumId) => {
+let cardHtml = (coverUrl, albumName, artistName) => {
   // Create the HTML using a template literal
   let html =
       `<li class="card">
@@ -58,7 +80,7 @@ let cardHtml = (coverUrl, albumName, artistName, albumId) => {
             src="${coverUrl}"
             alt="${albumName} album cover">
             <div class="btn-overlay">
-              <a href="#0" class="btn-info" data-id="${albumId}">More Info</a>
+              <a href="#0" class="btn-info">More Info</a>
             </div>
           </div>
           <figcaption class="card-name">${albumName}</figcaption>
@@ -81,14 +103,17 @@ $cardContainer.on('click', '.btn-info', function (e) {
   
   // AJAX request to retrieve detailed album information from Spotify
   $.ajax({
-    url: `https://api.spotify.com/v1/albums/${albumId}`,
+    url: 'https://api.spotify.com/v1/albums/',
+    data: {
+      ids: ''
+    },
 
     success: (results) => {
       console.log(results);
-      let type = results.album_type;
-      let label = results.label;
-      let releaseDate = results.release_date;
-      console.log(type);
+//      let type = results.album_type;
+//      let label = results.label;
+//      let releaseDate = results.release_date;
+//      console.log(type);
 
     } // end success callback function
   }); // end AJAX request
