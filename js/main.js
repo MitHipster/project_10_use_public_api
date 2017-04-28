@@ -38,39 +38,43 @@ $searchBtn.on('click', function () {
 
 // Iterate over search results to create a card that holds the album information for each object item
 let albumResults = (albums) => {
+  let artistName = '';
   
   $.each(albums, (i, album) => {
     // Get medium-sized image with height and width ~300px
     let coverUrl = album.images[1].url;
     let albumName = album.name;
-    let artistName = '';
+    artistName = artistList(album.artists);
 
-    $.each(album.artists, (i, artist) => {
-      if (i <= 2) {
-        artistName += artist.name + ' / ';
-      } else {
-        return false;
-      }
-    });// end each image iterator
-    artistName = artistName.slice(0, -3);
     // Call function to generate HTML for the cards and append to the card container ul
-    $cardContainer.append(cardHtml(coverUrl, albumName, artistName));
+    $cardContainer.append(cardHtml(i, coverUrl, albumName, artistName));
   }); // end each album iterator
 }; // end albumResults function
 
-//Build a comma-separated list of the album IDs for subsequent AJAX request
+// Combine multiple artist names into a string 
+let artistList = (artists) => {
+  let artistNames = '';
+
+  $.each(artists, (i, artist) => {
+    artistNames += artist.name + ' / ';
+  }); // end each artist iterator
+  // Remove last set of " / " and return list
+  return artistNames.slice(0, -3);
+}; // end artistList function
+
+// Build a comma-separated list of the album IDs for subsequent AJAX request
 let albumIdList = (albums) => {
   let albumList = '';
   
   $.each(albums, (i, album) => {
     albumList += (album.id + ',');
   }); // end each album iterator
-  // Remove last comma and retun list
+  // Remove last comma and return list
   return albumList.slice(0, -1);
 }; // end albumIdList function
 
 // Function to generate the card HTML with album image and name, plus insert album ID as a data attribute in the More Info link
-let cardHtml = (coverUrl, albumName, artistName) => {
+let cardHtml = (i, coverUrl, albumName, artistName) => {
   // Create the HTML using a template literal
   let html =
       `<li class="card">
@@ -80,7 +84,7 @@ let cardHtml = (coverUrl, albumName, artistName) => {
             src="${coverUrl}"
             alt="${albumName} album cover">
             <div class="btn-overlay">
-              <a href="#0" class="btn-info">More Info</a>
+              <a href="#0" class="btn-info" data-index="${i}">More Info</a>
             </div>
           </div>
           <figcaption class="card-name">${albumName}</figcaption>

@@ -16,7 +16,7 @@ li.card {
   .card-artist {
     line-height: 1rem;
     @include font-settings(0.9rem, 300, $color-text-gray);
-    padding-top: $edge-sm / 2;
+    padding-top: $edge-sm / 3;
   }
 }
 
