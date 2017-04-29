@@ -2,3 +2,61 @@
 // LightGallery Custom Styles
 //============================================================
 
+.lg-backdrop {
+  background-color: $color-bg-body;
+}
+
+.lg-custom.lg-outer {
+  .lg-actions {
+    .lg-next,
+    .lg-prev {
+      background-color: rgba($color-text-dark, 0.5);
+      color: $color-text-gray;
+      top: 25%;
+      &:hover {
+        color: $color-text-light;
+      }
+    }
+    .lg-next {
+      right: $edge-sm - 5px;
+    }
+    .lg-prev {
+      left: $edge-sm - 5px;
+    }
+  }
+  .lg-toolbar {
+    background-color: rgba($color-text-dark, 0.5);
+    .lg-icon {
+      color: $color-text-gray;
+      &:hover {
+        color: $color-text-light;
+      }
+    }
+  }
+  .lg-sub-html {
+    position: relative;
+    z-index: 1080;
+    top: 44%;
+    bottom: none;
+    max-width: 640px;
+    background-color: rgba(0, 0, 0, 1);
+    color: $color-text-light;
+    text-align: left;
+    margin: 0 auto;
+    padding: ($edge-sm - 5px) $edge-sm;
+    p {
+      font-size: 0.9rem;
+      margin: 5px 0 0;
+    }
+  }
+  #lg-counter {
+    color: $color-text-gray;
+    padding-top: 16px;
+  }
+  .lg-item,
+  .lg-img-wrap {
+    &:before {
+      height: 25%;
+    }
+  }
+}

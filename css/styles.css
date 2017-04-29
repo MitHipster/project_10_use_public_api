@@ -168,6 +168,60 @@ li.card {
   .image-overlay:hover .btn-info {
     opacity: 1; }
 
+/* line 5, ../scss/layout/_lightbox.scss */
+.lg-backdrop {
+  background-color: #1e2e35; }
+
+/* line 11, ../scss/layout/_lightbox.scss */
+.lg-custom.lg-outer .lg-actions .lg-next,
+.lg-custom.lg-outer .lg-actions .lg-prev {
+  background-color: rgba(84, 84, 84, 0.5);
+  color: #b3bcb8;
+  top: 25%; }
+  /* line 16, ../scss/layout/_lightbox.scss */
+  .lg-custom.lg-outer .lg-actions .lg-next:hover,
+  .lg-custom.lg-outer .lg-actions .lg-prev:hover {
+    color: #f1f3f3; }
+/* line 20, ../scss/layout/_lightbox.scss */
+.lg-custom.lg-outer .lg-actions .lg-next {
+  right: 10px; }
+/* line 23, ../scss/layout/_lightbox.scss */
+.lg-custom.lg-outer .lg-actions .lg-prev {
+  left: 10px; }
+/* line 27, ../scss/layout/_lightbox.scss */
+.lg-custom.lg-outer .lg-toolbar {
+  background-color: rgba(84, 84, 84, 0.5); }
+  /* line 29, ../scss/layout/_lightbox.scss */
+  .lg-custom.lg-outer .lg-toolbar .lg-icon {
+    color: #b3bcb8; }
+    /* line 31, ../scss/layout/_lightbox.scss */
+    .lg-custom.lg-outer .lg-toolbar .lg-icon:hover {
+      color: #f1f3f3; }
+/* line 36, ../scss/layout/_lightbox.scss */
+.lg-custom.lg-outer .lg-sub-html {
+  position: relative;
+  z-index: 1080;
+  top: 44%;
+  bottom: none;
+  max-width: 640px;
+  background-color: black;
+  color: #f1f3f3;
+  text-align: left;
+  margin: 0 auto;
+  padding: 10px 15px; }
+  /* line 47, ../scss/layout/_lightbox.scss */
+  .lg-custom.lg-outer .lg-sub-html p {
+    font-size: 0.9rem;
+    margin: 5px 0 0; }
+/* line 52, ../scss/layout/_lightbox.scss */
+.lg-custom.lg-outer #lg-counter {
+  color: #b3bcb8;
+  padding-top: 16px; }
+/* line 58, ../scss/layout/_lightbox.scss */
+.lg-custom.lg-outer .lg-item:before,
+.lg-custom.lg-outer .lg-img-wrap:before {
+  height: 25%; }
+
 /* line 7, ../scss/layout/_footer.scss */
 footer {
   display: flex;

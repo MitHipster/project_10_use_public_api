@@ -120,7 +120,7 @@ $cardContainer.on('click', '.btn-info', function (e) {
     dynamicEl: lgDynamicEl,
     index: i,
     mode: 'lg-fade',
-    speed: 0,
+    speed: 200,
     width: '640px',
     height: '960px',
     addClass: 'lg-custom',
@@ -137,13 +137,17 @@ let albumObjArray = (albums) => {
   $.each(albums, (i, album) => {
     let coverUrl = album.images[1].url;
     let albumName = album.name;
+    let albumLabel = album.label;
+    let albumRelease = album.release_date.slice(0, 4);
     artistName = artistList(album.artists);
     obj = {
       'src': coverUrl,
       'subHtml': 
         `<div class="lg-details-container">
-          <p><span>Album Title: </span>${albumName}</p>
-          <p><span>Artist: </span>${artistName}</p>
+          <p class="lg-album"><span>Album Title: </span>${albumName}</p>
+          <p class="lg-artist"><span>Artist: </span>${artistName}</p>
+          <p class="lg-label"><span>Label: </span>${albumLabel}</p>
+          <p class="lg-release-date"><span>Released: </span>${albumRelease}</p>
         </div>`
     };
     lgDynamicEl.push(obj);
