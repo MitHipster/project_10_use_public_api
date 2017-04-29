@@ -118,10 +118,13 @@ $cardContainer.on('click', '.btn-info', function (e) {
     dynamic: true,
     // Dynamic dataset base on search results
     dynamicEl: lgDynamicEl,
-    addClass: 'lg-custom',
     index: i,
     mode: 'lg-fade',
-    hideBarsDelay: 4000,
+    speed: 0,
+    width: '640px',
+    height: '960px',
+    addClass: 'lg-custom',
+    hideBarsDelay: 400000,
     getCaptionFromTitleOrAlt: false,
     download: false
   }); // end LightGallery constructor
@@ -130,10 +133,18 @@ $cardContainer.on('click', '.btn-info', function (e) {
 // Function to create an array of album objects for use as dynamic LightGallery dataset
 let albumObjArray = (albums) => {
   let obj = {};
+  let artistName = '';
   $.each(albums, (i, album) => {
     let coverUrl = album.images[1].url;
+    let albumName = album.name;
+    artistName = artistList(album.artists);
     obj = {
-      'src': coverUrl
+      'src': coverUrl,
+      'subHtml': 
+        `<div class="lg-details-container">
+          <p><span>Album Title: </span>${albumName}</p>
+          <p><span>Artist: </span>${artistName}</p>
+        </div>`
     };
     lgDynamicEl.push(obj);
   }); // end each album iterator
