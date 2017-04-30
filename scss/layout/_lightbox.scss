@@ -5,17 +5,19 @@
 .lg-backdrop {
   background-color: $color-bg-body;
 }
-
+      
 .lg-custom.lg-outer {
   .lg-actions {
     .lg-next,
     .lg-prev {
-      background-color: rgba($color-text-dark, 0.5);
-      color: $color-text-gray;
       top: 25%;
-      &:hover {
-        color: $color-text-light;
+      background-color: $color-bg-button;
+      color: $color-text-light;
+      @extend %hover-state;
+      @include mq('mobile') {
+        top: 28%;
       }
+      
     }
     .lg-next {
       right: $edge-sm - 5px;
@@ -25,38 +27,55 @@
     }
   }
   .lg-toolbar {
-    background-color: rgba($color-text-dark, 0.5);
+    background-color: $color-bg-search;
     .lg-icon {
-      color: $color-text-gray;
-      &:hover {
-        color: $color-text-light;
-      }
+      background-color: $color-bg-button;
+      color: $color-text-light;
+
+      @extend %hover-state;
     }
   }
   .lg-sub-html {
     position: relative;
     z-index: 1080;
     top: 44%;
-    bottom: none;
+    bottom: none; /* Remove? */
     max-width: 640px;
     background-color: rgba(0, 0, 0, 1);
     color: $color-text-light;
     text-align: left;
     margin: 0 auto;
     padding: ($edge-sm - 5px) $edge-sm;
+    @include mq('mobile') {
+        top: 50%;
+      }
     p {
       font-size: 0.9rem;
       margin: 5px 0 0;
     }
+    span {
+      @include font-settings(0.8rem, 400, $color-text-gray);
+    }
   }
   #lg-counter {
-    color: $color-text-gray;
+    @include font-settings($weight: 400, $color: $color-text-dark);
     padding-top: 16px;
   }
   .lg-item,
   .lg-img-wrap {
     &:before {
       height: 25%;
+      @include mq('mobile') {
+        height: 28%;
+      }
+    }
+  }
+  .lg-img-wrap {
+    .lg-image {
+      max-width: 300px;
+      @include mq('mobile') {
+        max-width: 400px;
+      }
     }
   }
 }

@@ -10,7 +10,7 @@ let lgDynamicEl = []; // Dynamic LightGallery dataset
 $searchBtn.on('click', function () {
   let searchValue = $searchField.val();
   $cardContainer.empty();
-  // AJAX request to retrieve data from Spotify
+  // AJAX request to retrieve search results from Spotify
   $.ajax({
     url: 'https://api.spotify.com/v1/search',
     data: {
@@ -21,7 +21,7 @@ $searchBtn.on('click', function () {
     success: (results) => {
       let albumList = '';
       console.log(results);
-      // If no albums are returned, show no results found message
+      // If albums are returned continue else show no results found message
       if (results.albums.items.length !== 0) {
         // Call function to create album cards
         albumResults(results.albums.items);
@@ -30,6 +30,7 @@ $searchBtn.on('click', function () {
         // Clear search field
         $searchField.val('');
         
+        // AJAX request to retrieve detailed album information based on earlier search results
         $.ajax({
           url: 'https://api.spotify.com/v1/albums/',
           data: {
@@ -124,9 +125,18 @@ $cardContainer.on('click', '.btn-info', function (e) {
     width: '640px',
     height: '960px',
     addClass: 'lg-custom',
-    hideBarsDelay: 400000,
     getCaptionFromTitleOrAlt: false,
     download: false
+  }).on('onAfterAppendSubHtml.lg', function () {
+    // Call MediaElement constructor after appending album detail to style player for song samples
+    $('audio').mediaelementplayer({
+      enableAutosize: false,
+      alwaysShowControls: true,
+      features: ['playpause'],
+      success: function (mediaElement, originalNode) {
+        mediaElement.load();
+      }
+    });
   }); // end LightGallery constructor
 }); // .btn-info click function
 
@@ -134,23 +144,31 @@ $cardContainer.on('click', '.btn-info', function (e) {
 let albumObjArray = (albums) => {
   let obj = {};
   let artistName = '';
+  // Clear array of earlier search results
+  lgDynamicEl = [];
   $.each(albums, (i, album) => {
-    let coverUrl = album.images[1].url;
-    let albumName = album.name;
-    let albumLabel = album.label;
+    let coverUrl = album.images[0].url;
     let albumRelease = album.release_date.slice(0, 4);
     artistName = artistList(album.artists);
     obj = {
       'src': coverUrl,
       'subHtml': 
         `<div class="lg-details-container">
-          <p class="lg-album"><span>Album Title: </span>${albumName}</p>
+          <p class="lg-album"><span>Album Title: </span>${album.name}</p>
           <p class="lg-artist"><span>Artist: </span>${artistName}</p>
-          <p class="lg-label"><span>Label: </span>${albumLabel}</p>
-          <p class="lg-release-date"><span>Released: </span>${albumRelease}</p>
+          <p class="lg-label"><span>Label: </span>${album.label}</p>
+          <p class="lg-release-date"><span>Released: </span>${albumRelease} (${album.album_type})</p>
+          <div class="flexy">
+            <audio controls class="lg-track-sample mejs__custom"
+              src="https://p.scdn.co/mp3-preview/2d75ef505223315f19fb95d95f9cb1f02398fdc2?cid=null">
+            </audio>
+            <p>Test to see if it fits</p>
+            <p>Test to see if it fits</p>
+          </div>
         </div>`
     };
     lgDynamicEl.push(obj);
   }); // end each album iterator
-  console.log(lgDynamicEl);
 }; // end albumObjArray function
+
+

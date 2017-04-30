@@ -6,7 +6,7 @@ li.card {
   width: 320px - ($edge-sm * 2);
   @include font-settings($weight: 400, $color: $color-text-light);
   padding: $edge-sm;
-  margin-bottom: $edge-sm;
+  margin: 0 auto $edge-sm;
   .card-name {
     line-height: 1.1rem;
     border-top: 2px solid $color-border;

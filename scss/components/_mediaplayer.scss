@@ -1,0 +1,21 @@
+//============================================================
+// MediaElement Custom Styles
+//============================================================
+
+.mejs__custom.mejs__container {
+  min-width: 40px !important;
+  max-width: 40px !important;
+  .mejs__controls {
+    background: $color-bg-button;
+    border-radius: 50%;
+    padding: 1px 0 0 4px;
+    @extend %hover-state;
+  }
+}
+
+.flexy {
+  @include display-flex($justify: flex-start, $align: center);
+  p {
+    flex-grow: 1;
+  }
+}
