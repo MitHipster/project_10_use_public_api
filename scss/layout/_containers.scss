@@ -20,6 +20,9 @@
 //------------ Cards --------------
 
 .card-container {
+  @include display-flex($wrap: wrap, $justify: space-around);
+  max-width: 1200px;
+  margin: 50px auto;
   #no-match {
     color: $color-text-gray;
   }

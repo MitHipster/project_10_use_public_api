@@ -155,7 +155,7 @@ $cardContainer.on('click', '.btn-info', function (e) {
     mode: 'lg-fade',
     speed: 200,
     width: '640px',
-//    height: '960px',
+    hideBarsDelay: 600000,
     addClass: 'lg-custom',
     getCaptionFromTitleOrAlt: false,
     download: false
@@ -195,6 +195,7 @@ let albumObjArray = (albums) => {
             <p class="lg-artist"><span>Artist: </span>${artistName}</p>
             <p class="lg-label"><span>Label: </span>${album.label}</p>
             <p class="lg-release-date"><span>Released: </span>${albumRelease} (${album.album_type})</p>
+            <p><span>Tracks: </span></p>
           </div>
           <ul class="lg-track-info">
             ${trackList}

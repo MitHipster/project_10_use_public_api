@@ -17,7 +17,7 @@ body {
   #btn-search:hover, .lg-custom.lg-outer .lg-actions .lg-next:hover,
   .lg-custom.lg-outer .lg-actions .lg-prev:hover, .lg-custom.lg-outer .lg-toolbar .lg-icon:hover {
     color: #f1f3f3;
-    background-color: #9ecf6e; }
+    background-color: #88c54f; }
 
 /* line 26, ../scss/utils/_extends.scss */
 .mejs__custom.mejs__container .mejs__controls {
@@ -59,16 +59,22 @@ ul {
   list-style: none; }
 
 /* line 29, ../scss/base/_base.scss */
+figure {
+  display: flex;
+  flex-direction: column;
+  flex: 1; }
+
+/* line 34, ../scss/base/_base.scss */
 figure,
 h1 {
   margin: 0; }
 
-/* line 34, ../scss/base/_base.scss */
+/* line 39, ../scss/base/_base.scss */
 img {
   max-width: 100%;
   max-height: 100%; }
 
-/* line 39, ../scss/base/_base.scss */
+/* line 44, ../scss/base/_base.scss */
 a {
   text-decoration: none;
   color: #545454; }
@@ -77,12 +83,10 @@ a {
 .mejs__custom.mejs__container {
   min-width: 40px !important;
   max-width: 40px !important;
-  border-radius: 50%;
   background: none; }
-  /* line 10, ../scss/components/_mediaplayer.scss */
+  /* line 9, ../scss/components/_mediaplayer.scss */
   .mejs__custom.mejs__container .mejs__controls {
     background: none;
-    border-radius: 50%;
     padding: 1px 0 0 4px; }
 
 /* line 7, ../scss/layout/_containers.scss */
@@ -98,9 +102,16 @@ a {
   height: 60px;
   background-color: #dde1df; }
 
-/* line 23, ../scss/layout/_containers.scss */
-.card-container #no-match {
-  color: #b3bcb8; }
+/* line 22, ../scss/layout/_containers.scss */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1200px;
+  margin: 50px auto; }
+  /* line 26, ../scss/layout/_containers.scss */
+  .card-container #no-match {
+    color: #b3bcb8; }
 
 /* line 7, ../scss/layout/_header.scss */
 header {
@@ -139,26 +150,31 @@ header {
 #btn-search {
   width: 40px;
   height: 40px;
-  background-color: #78b53c;
+  background-color: #6fa938;
   outline: none;
   cursor: pointer;
   border: none; }
 
 /* line 5, ../scss/layout/_cards.scss */
 li.card {
+  display: flex;
+  flex-direction: column;
   width: 290px;
   font-size: 1rem;
   font-weight: 400;
   color: #f1f3f3;
   padding: 15px;
-  margin: 0 auto 15px; }
-  /* line 10, ../scss/layout/_cards.scss */
+  margin: 0 0 15px; }
+  /* line 11, ../scss/layout/_cards.scss */
+  li.card .image-overlay {
+    margin-bottom: 15px; }
+  /* line 14, ../scss/layout/_cards.scss */
   li.card .card-name {
     line-height: 1.1rem;
     border-top: 2px solid #a9386f;
-    margin-top: 15px;
+    margin-top: auto;
     padding-top: 7.5px; }
-  /* line 16, ../scss/layout/_cards.scss */
+  /* line 20, ../scss/layout/_cards.scss */
   li.card .card-artist {
     line-height: 1rem;
     font-size: 0.9rem;
@@ -166,10 +182,10 @@ li.card {
     color: #b3bcb8;
     padding-top: 5px; }
 
-/* line 23, ../scss/layout/_cards.scss */
+/* line 27, ../scss/layout/_cards.scss */
 .image-overlay {
   position: relative; }
-  /* line 25, ../scss/layout/_cards.scss */
+  /* line 29, ../scss/layout/_cards.scss */
   .image-overlay .btn-overlay {
     display: flex;
     justify-content: center;
@@ -180,10 +196,10 @@ li.card {
     width: 100%;
     height: 100%;
     transition: background 0.5s ease; }
-  /* line 34, ../scss/layout/_cards.scss */
+  /* line 38, ../scss/layout/_cards.scss */
   .image-overlay:hover .btn-overlay {
     background: rgba(30, 46, 53, 0.5); }
-  /* line 37, ../scss/layout/_cards.scss */
+  /* line 41, ../scss/layout/_cards.scss */
   .image-overlay .btn-info {
     text-transform: uppercase;
     color: #a8d57b;
@@ -191,10 +207,10 @@ li.card {
     padding: 12px 24px;
     opacity: 0;
     transition: opacity 0.4s ease, background-color 0.4s ease; }
-    /* line 44, ../scss/layout/_cards.scss */
+    /* line 48, ../scss/layout/_cards.scss */
     .image-overlay .btn-info:hover {
       background-color: rgba(65, 88, 71, 0.8); }
-  /* line 48, ../scss/layout/_cards.scss */
+  /* line 52, ../scss/layout/_cards.scss */
   .image-overlay:hover .btn-info {
     opacity: 1; }
 
@@ -210,13 +226,13 @@ li.card {
 .lg-custom.lg-outer .lg-actions .lg-next,
 .lg-custom.lg-outer .lg-actions .lg-prev {
   top: 25%;
-  background-color: #78b53c;
+  background-color: #6fa938;
   color: #f1f3f3; }
   @media (min-width: 480px) {
     /* line 15, ../scss/layout/_lightbox.scss */
     .lg-custom.lg-outer .lg-actions .lg-next,
     .lg-custom.lg-outer .lg-actions .lg-prev {
-      top: 28%; } }
+      top: 28.5%; } }
 /* line 26, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-actions .lg-next {
   right: 10px; }
@@ -228,7 +244,7 @@ li.card {
   background-color: #dde1df; }
   /* line 35, ../scss/layout/_lightbox.scss */
   .lg-custom.lg-outer .lg-toolbar .lg-icon {
-    background-color: #78b53c;
+    background-color: #6fa938;
     color: #f1f3f3; }
 /* line 41, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-sub-html {
@@ -245,63 +261,68 @@ li.card {
     /* line 41, ../scss/layout/_lightbox.scss */
     .lg-custom.lg-outer .lg-sub-html {
       top: 50%; } }
-/* line 56, ../scss/layout/_lightbox.scss */
+/* line 55, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer #lg-counter {
   font-size: 1rem;
   font-weight: 400;
   color: #545454;
   padding-top: 16px; }
-/* line 62, ../scss/layout/_lightbox.scss */
+/* line 61, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-item:before,
 .lg-custom.lg-outer .lg-img-wrap:before {
   height: 25%; }
   @media (min-width: 480px) {
-    /* line 62, ../scss/layout/_lightbox.scss */
+    /* line 61, ../scss/layout/_lightbox.scss */
     .lg-custom.lg-outer .lg-item:before,
     .lg-custom.lg-outer .lg-img-wrap:before {
-      height: 28%; } }
-/* line 70, ../scss/layout/_lightbox.scss */
+      height: 28.5%; } }
+/* line 69, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-img-wrap .lg-image {
   max-width: 300px; }
   @media (min-width: 480px) {
-    /* line 70, ../scss/layout/_lightbox.scss */
+    /* line 69, ../scss/layout/_lightbox.scss */
     .lg-custom.lg-outer .lg-img-wrap .lg-image {
       max-width: 400px; } }
 
-/* line 81, ../scss/layout/_lightbox.scss */
+/* line 80, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-album-info p {
   font-size: 0.9rem;
   font-weight: 300;
   color: #f1f3f3;
   margin: 0;
   padding: 10px 0 0; }
-/* line 86, ../scss/layout/_lightbox.scss */
+/* line 85, ../scss/layout/_lightbox.scss */
+.lg-custom.lg-outer .lg-album-info p:last-child {
+  padding: 10px 0 10px; }
+/* line 88, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-album-info span {
   font-size: 0.8rem;
   font-weight: 400;
   color: #b3bcb8; }
 
-/* line 93, ../scss/layout/_lightbox.scss */
+/* line 95, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-track {
   display: flex;
   justify-content: space-between;
-  align-items: center; }
-  /* line 97, ../scss/layout/_lightbox.scss */
+  align-items: center;
+  padding: 1px 0; }
+  /* line 99, ../scss/layout/_lightbox.scss */
   .lg-custom.lg-outer .lg-track p {
     font-size: 0.8rem;
     font-weight: 300;
     color: #f1f3f3;
-    padding-left: 8px; }
-  /* line 101, ../scss/layout/_lightbox.scss */
+    padding-left: 8px;
+    margin: 0; }
+  /* line 104, ../scss/layout/_lightbox.scss */
   .lg-custom.lg-outer .lg-track .lg-track-num {
     font-size: 0.8rem;
     font-weight: 400;
     color: #b3bcb8;
     width: 24px; }
-  /* line 105, ../scss/layout/_lightbox.scss */
+  /* line 108, ../scss/layout/_lightbox.scss */
   .lg-custom.lg-outer .lg-track .lg-track-name {
     flex: 1; }
-  /* line 108, ../scss/layout/_lightbox.scss */
+  /* line 111, ../scss/layout/_lightbox.scss */
   .lg-custom.lg-outer .lg-track .lg-track-duration {
     font-size: 0.8rem;
     font-weight: 400;

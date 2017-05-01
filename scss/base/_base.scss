@@ -26,6 +26,11 @@ ul {
   list-style: none;
 }
 
+figure {
+  @include display-flex(column);
+  flex: 1;
+}
+
 figure,
 h1 {
   margin: 0;

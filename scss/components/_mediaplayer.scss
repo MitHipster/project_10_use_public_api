@@ -5,11 +5,9 @@
 .mejs__custom.mejs__container {
   min-width: 40px !important;
   max-width: 40px !important;
-  border-radius: 50%;
   background: none;
   .mejs__controls {
     background: none;
-    border-radius: 50%;
     padding: 1px 0 0 4px;
     @extend %hover-btn-play;
   }

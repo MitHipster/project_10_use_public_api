@@ -19,7 +19,7 @@
       color: $color-text-light;
       @extend %hover-btn;
       @include mq('mobile') {
-        top: 28%;
+        top: 28.5%;
       }
       
     }
@@ -47,7 +47,6 @@
     background-color: $color-bg-body;
     color: $color-text-light;
     text-align: left;
-//    margin: 0 auto;
     padding: 0 $edge-sm;
     @include mq('mobile') {
       top: 50%;
@@ -62,7 +61,7 @@
     &:before {
       height: 25%;
       @include mq('mobile') {
-        height: 28%;
+        height: 28.5%;
       }
     }
   }
@@ -83,6 +82,9 @@
       margin: 0;
       padding: ($edge-sm - 5px) 0 0;
     }
+    p:last-child {
+      padding: ($edge-sm - 5px) 0 $edge-sm - 5px;
+    }
     span {
       @include font-settings(0.8rem, 400, $color-text-gray);
     }
@@ -92,11 +94,12 @@
 .lg-custom.lg-outer {
   .lg-track {
     @include display-flex($justify: space-between, $align: center);
-//    margin: ($edge-sm - 5px) 0 0;
+    padding: 1px 0;
     @extend %hover-li;
     p {
       @include font-settings(0.8rem, 300, $color-text-light);
       padding-left: 8px;
+      margin: 0;
     }
     .lg-track-num {
       @include font-settings(0.8rem, 400, $color-text-gray);

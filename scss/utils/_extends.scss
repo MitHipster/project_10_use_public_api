@@ -19,7 +19,7 @@
   transition: background-color .4s ease-out;
   &:hover {
     color: $color-text-light;
-    background-color: lighten($color-bg-button, 15%);
+    background-color: lighten($color-bg-button, 10%);
   }
 }
 
