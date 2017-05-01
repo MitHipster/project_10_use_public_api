@@ -2,19 +2,36 @@
 body {
   font-family: "Montserrat", sans-serif; }
 
-/* line 10, ../scss/utils/_extends.scss */
-#search:focus, #btn-search:focus {
-  box-shadow: inset 0 0 5px #1e2e35; }
+/* line 9, ../scss/utils/_extends.scss */
+#search, #btn-search {
+  transition: box-shadow .4s ease-out; }
+  /* line 11, ../scss/utils/_extends.scss */
+  #search:focus, #btn-search:focus {
+    box-shadow: inset 0 0 5px #1e2e35; }
 
-/* line 17, ../scss/utils/_extends.scss */
-.mejs__custom.mejs__container .mejs__controls, .lg-custom.lg-outer .lg-actions .lg-next,
+/* line 18, ../scss/utils/_extends.scss */
+#btn-search, .lg-custom.lg-outer .lg-actions .lg-next,
 .lg-custom.lg-outer .lg-actions .lg-prev, .lg-custom.lg-outer .lg-toolbar .lg-icon {
   transition: background-color .4s ease-out; }
-  /* line 19, ../scss/utils/_extends.scss */
-  .mejs__custom.mejs__container .mejs__controls:hover, .lg-custom.lg-outer .lg-actions .lg-next:hover,
+  /* line 20, ../scss/utils/_extends.scss */
+  #btn-search:hover, .lg-custom.lg-outer .lg-actions .lg-next:hover,
   .lg-custom.lg-outer .lg-actions .lg-prev:hover, .lg-custom.lg-outer .lg-toolbar .lg-icon:hover {
     color: #f1f3f3;
-    background-color: #92c95b; }
+    background-color: #9ecf6e; }
+
+/* line 26, ../scss/utils/_extends.scss */
+.mejs__custom.mejs__container .mejs__controls {
+  transition: background-color .4s ease-out; }
+  /* line 28, ../scss/utils/_extends.scss */
+  .mejs__custom.mejs__container .mejs__controls:hover {
+    background-color: #c54f88; }
+
+/* line 33, ../scss/utils/_extends.scss */
+.lg-custom.lg-outer .lg-track {
+  transition: background-color .4s ease-out; }
+  /* line 35, ../scss/utils/_extends.scss */
+  .lg-custom.lg-outer .lg-track:hover {
+    background-color: #702549; }
 
 /* line 5, ../scss/base/_base.scss */
 * {
@@ -59,21 +76,14 @@ a {
 /* line 5, ../scss/components/_mediaplayer.scss */
 .mejs__custom.mejs__container {
   min-width: 40px !important;
-  max-width: 40px !important; }
-  /* line 8, ../scss/components/_mediaplayer.scss */
+  max-width: 40px !important;
+  border-radius: 50%;
+  background: none; }
+  /* line 10, ../scss/components/_mediaplayer.scss */
   .mejs__custom.mejs__container .mejs__controls {
-    background: #78b53c;
+    background: none;
     border-radius: 50%;
     padding: 1px 0 0 4px; }
-
-/* line 16, ../scss/components/_mediaplayer.scss */
-.flexy {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center; }
-  /* line 18, ../scss/components/_mediaplayer.scss */
-  .flexy p {
-    flex-grow: 1; }
 
 /* line 7, ../scss/layout/_containers.scss */
 .outer-container {
@@ -88,7 +98,7 @@ a {
   height: 60px;
   background-color: #dde1df; }
 
-/* line 21, ../scss/layout/_containers.scss */
+/* line 23, ../scss/layout/_containers.scss */
 .card-container #no-match {
   color: #b3bcb8; }
 
@@ -120,24 +130,19 @@ header {
   background-color: #f1f3f3;
   outline: none;
   border: none;
-  padding: 0 15px;
-  transition: box-shadow .4s ease-out; }
-  /* line 18, ../scss/layout/_search.scss */
+  padding: 0 15px; }
+  /* line 17, ../scss/layout/_search.scss */
   #search::placeholder {
     color: #545454; }
 
-/* line 23, ../scss/layout/_search.scss */
+/* line 22, ../scss/layout/_search.scss */
 #btn-search {
   width: 40px;
   height: 40px;
   background-color: #78b53c;
   outline: none;
   cursor: pointer;
-  border: none;
-  transition: box-shadow .4s ease-out, background-color .4s ease-out; }
-  /* line 32, ../scss/layout/_search.scss */
-  #btn-search:hover {
-    background-color: #92c95b; }
+  border: none; }
 
 /* line 5, ../scss/layout/_cards.scss */
 li.card {
@@ -194,81 +199,114 @@ li.card {
     opacity: 1; }
 
 /* line 5, ../scss/layout/_lightbox.scss */
+.lg-on {
+  overflow: hidden; }
+
+/* line 9, ../scss/layout/_lightbox.scss */
 .lg-backdrop {
   background-color: #1e2e35; }
 
-/* line 11, ../scss/layout/_lightbox.scss */
+/* line 15, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-actions .lg-next,
 .lg-custom.lg-outer .lg-actions .lg-prev {
   top: 25%;
   background-color: #78b53c;
   color: #f1f3f3; }
   @media (min-width: 480px) {
-    /* line 11, ../scss/layout/_lightbox.scss */
+    /* line 15, ../scss/layout/_lightbox.scss */
     .lg-custom.lg-outer .lg-actions .lg-next,
     .lg-custom.lg-outer .lg-actions .lg-prev {
       top: 28%; } }
-/* line 22, ../scss/layout/_lightbox.scss */
+/* line 26, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-actions .lg-next {
   right: 10px; }
-/* line 25, ../scss/layout/_lightbox.scss */
+/* line 29, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-actions .lg-prev {
   left: 10px; }
-/* line 29, ../scss/layout/_lightbox.scss */
+/* line 33, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-toolbar {
   background-color: #dde1df; }
-  /* line 31, ../scss/layout/_lightbox.scss */
+  /* line 35, ../scss/layout/_lightbox.scss */
   .lg-custom.lg-outer .lg-toolbar .lg-icon {
     background-color: #78b53c;
     color: #f1f3f3; }
-/* line 38, ../scss/layout/_lightbox.scss */
+/* line 41, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-sub-html {
-  position: relative;
+  position: absolute;
   z-index: 1080;
   top: 44%;
-  bottom: none;
-  /* Remove? */
   max-width: 640px;
-  background-color: black;
+  overflow-y: scroll;
+  background-color: #1e2e35;
   color: #f1f3f3;
   text-align: left;
-  margin: 0 auto;
-  padding: 10px 15px; }
+  padding: 0 15px; }
   @media (min-width: 480px) {
-    /* line 38, ../scss/layout/_lightbox.scss */
+    /* line 41, ../scss/layout/_lightbox.scss */
     .lg-custom.lg-outer .lg-sub-html {
       top: 50%; } }
-  /* line 52, ../scss/layout/_lightbox.scss */
-  .lg-custom.lg-outer .lg-sub-html p {
-    font-size: 0.9rem;
-    margin: 5px 0 0; }
-  /* line 56, ../scss/layout/_lightbox.scss */
-  .lg-custom.lg-outer .lg-sub-html span {
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: #b3bcb8; }
-/* line 60, ../scss/layout/_lightbox.scss */
+/* line 56, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer #lg-counter {
   font-size: 1rem;
   font-weight: 400;
   color: #545454;
   padding-top: 16px; }
-/* line 66, ../scss/layout/_lightbox.scss */
+/* line 62, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-item:before,
 .lg-custom.lg-outer .lg-img-wrap:before {
   height: 25%; }
   @media (min-width: 480px) {
-    /* line 66, ../scss/layout/_lightbox.scss */
+    /* line 62, ../scss/layout/_lightbox.scss */
     .lg-custom.lg-outer .lg-item:before,
     .lg-custom.lg-outer .lg-img-wrap:before {
       height: 28%; } }
-/* line 74, ../scss/layout/_lightbox.scss */
+/* line 70, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-img-wrap .lg-image {
   max-width: 300px; }
   @media (min-width: 480px) {
-    /* line 74, ../scss/layout/_lightbox.scss */
+    /* line 70, ../scss/layout/_lightbox.scss */
     .lg-custom.lg-outer .lg-img-wrap .lg-image {
       max-width: 400px; } }
+
+/* line 81, ../scss/layout/_lightbox.scss */
+.lg-custom.lg-outer .lg-album-info p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #f1f3f3;
+  margin: 0;
+  padding: 10px 0 0; }
+/* line 86, ../scss/layout/_lightbox.scss */
+.lg-custom.lg-outer .lg-album-info span {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #b3bcb8; }
+
+/* line 93, ../scss/layout/_lightbox.scss */
+.lg-custom.lg-outer .lg-track {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  /* line 97, ../scss/layout/_lightbox.scss */
+  .lg-custom.lg-outer .lg-track p {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: #f1f3f3;
+    padding-left: 8px; }
+  /* line 101, ../scss/layout/_lightbox.scss */
+  .lg-custom.lg-outer .lg-track .lg-track-num {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #b3bcb8;
+    width: 24px; }
+  /* line 105, ../scss/layout/_lightbox.scss */
+  .lg-custom.lg-outer .lg-track .lg-track-name {
+    flex: 1; }
+  /* line 108, ../scss/layout/_lightbox.scss */
+  .lg-custom.lg-outer .lg-track .lg-track-duration {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #b3bcb8;
+    padding-right: 5px; }
 
 /* line 7, ../scss/layout/_footer.scss */
 footer {

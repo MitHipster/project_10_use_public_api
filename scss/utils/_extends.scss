@@ -7,6 +7,7 @@
 // Focus
 
 %focus-state {
+  transition: box-shadow .4s ease-out;
   &:focus {
     box-shadow: inset 0 0 5px $color-bg-body;
   }
@@ -14,10 +15,24 @@
 
 // Hover
 
-%hover-state {
+%hover-btn {
   transition: background-color .4s ease-out;
   &:hover {
     color: $color-text-light;
-    background-color: lighten($color-bg-button, 10%);
+    background-color: lighten($color-bg-button, 15%);
+  }
+}
+
+%hover-btn-play {
+  transition: background-color .4s ease-out;
+  &:hover {
+    background-color: lighten($color-border, 10%);
+  }
+}
+
+%hover-li {
+  transition: background-color .4s ease-out;
+  &:hover {
+    background-color: darken($color-border, 15%);
   }
 }

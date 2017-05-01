@@ -13,7 +13,6 @@
   outline: none;
   border: none;
   padding: 0 15px;
-  transition: box-shadow .4s ease-out;
   @extend %focus-state;
   &::placeholder {
     color: $color-text-dark;
@@ -27,9 +26,6 @@
   outline: none;
   cursor: pointer;
   border: none;
-  transition: box-shadow .4s ease-out, background-color .4s ease-out;
   @extend %focus-state;
-  &:hover {
-    background-color: lighten($color-bg-button, 10%);
-  }
+  @extend %hover-btn;
 }

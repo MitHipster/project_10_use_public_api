@@ -2,6 +2,10 @@
 // LightGallery Custom Styles
 //============================================================
 
+.lg-on {
+  overflow: hidden;
+}
+
 .lg-backdrop {
   background-color: $color-bg-body;
 }
@@ -13,7 +17,7 @@
       top: 25%;
       background-color: $color-bg-button;
       color: $color-text-light;
-      @extend %hover-state;
+      @extend %hover-btn;
       @include mq('mobile') {
         top: 28%;
       }
@@ -31,30 +35,22 @@
     .lg-icon {
       background-color: $color-bg-button;
       color: $color-text-light;
-
-      @extend %hover-state;
+      @extend %hover-btn;
     }
   }
   .lg-sub-html {
-    position: relative;
+    position: absolute;
     z-index: 1080;
     top: 44%;
-    bottom: none; /* Remove? */
     max-width: 640px;
-    background-color: rgba(0, 0, 0, 1);
+    overflow-y: scroll;
+    background-color: $color-bg-body;
     color: $color-text-light;
     text-align: left;
-    margin: 0 auto;
-    padding: ($edge-sm - 5px) $edge-sm;
+//    margin: 0 auto;
+    padding: 0 $edge-sm;
     @include mq('mobile') {
-        top: 50%;
-      }
-    p {
-      font-size: 0.9rem;
-      margin: 5px 0 0;
-    }
-    span {
-      @include font-settings(0.8rem, 400, $color-text-gray);
+      top: 50%;
     }
   }
   #lg-counter {
@@ -79,3 +75,40 @@
     }
   }
 }
+
+.lg-custom.lg-outer {
+  .lg-album-info {
+    p {
+      @include font-settings(0.9rem, 300, $color-text-light);
+      margin: 0;
+      padding: ($edge-sm - 5px) 0 0;
+    }
+    span {
+      @include font-settings(0.8rem, 400, $color-text-gray);
+    }
+  }
+}
+
+.lg-custom.lg-outer {
+  .lg-track {
+    @include display-flex($justify: space-between, $align: center);
+//    margin: ($edge-sm - 5px) 0 0;
+    @extend %hover-li;
+    p {
+      @include font-settings(0.8rem, 300, $color-text-light);
+      padding-left: 8px;
+    }
+    .lg-track-num {
+      @include font-settings(0.8rem, 400, $color-text-gray);
+      width: 24px;
+    }
+    .lg-track-name {
+      flex: 1;
+    }
+    .lg-track-duration {
+      @include font-settings(0.8rem, 400, $color-text-gray);
+      padding-right: 5px;
+    }
+  }
+}
+

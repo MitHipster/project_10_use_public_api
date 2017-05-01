@@ -17,20 +17,20 @@
 }
 
 // Media queries
-@mixin mq($device) {            
+@mixin mq($device) {
   @if $device == 'mobile' {
     @media (min-width: $mobile-width) {
-      @content;       
-    }          
-  }    
+      @content;
+    }
+  }
   @else if $device == 'tablet' {
     @media (min-width: $tablet-width) {
-      @content;       
-    }             
-  }  
+      @content;
+    }
+  }
   @else if $device == 'desktop' {
     @media (min-width: $desktop-width) {
-      @content;       
-    }             
-  } 
+      @content;
+    }
+  }
 }
