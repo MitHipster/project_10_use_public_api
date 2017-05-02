@@ -29,15 +29,11 @@
       </button>
     </div>
     
-    <div class="sort-container" style="display:none">
-      <label class="sort-label primary">Year released:</label>
-      <input type="radio" id="sort-desc" class="sort-input" name="sort-year" value="desc">
-      <label for="sort-desc" class="sort-label secondary">Newest</label>
-      <input type="radio" id="sort-asc" class="sort-input" name="sort-year" value="asc">
-      <label for="sort-asc" class="sort-label secondary">Oldest</label>
-    </div>
-    
     <main class="outer-container" role="main">
+      <div class="sort-container" style="display:none">
+        <p class="sort-label">Search results for: &quot;<span id="search-term"></span>&quot;</p>
+        <p class="sort-label">Sort albums by: <a href=#0 class="sort-selection" data-sort="desc">newest</a> or <a href=#0 class="sort-selection" data-sort="asc">oldest</a></p>
+      </div>
       <div>
         <ul class="card-container">
         </ul>

@@ -9,29 +9,29 @@ body {
   #search:focus, #btn-search:focus {
     box-shadow: inset 0 0 5px #1e2e35; }
 
-/* line 16, ../scss/utils/_extends.scss */
-.sort-input {
-  transition: box-shadow .4s ease-out; }
-  /* line 18, ../scss/utils/_extends.scss */
-  .sort-input:focus {
-    box-shadow: inset 0 0 5px #6fa938; }
-
-/* line 25, ../scss/utils/_extends.scss */
+/* line 18, ../scss/utils/_extends.scss */
 #btn-search, .lg-custom.lg-outer .lg-actions .lg-next,
 .lg-custom.lg-outer .lg-actions .lg-prev, .lg-custom.lg-outer .lg-toolbar .lg-icon {
   transition: background-color .4s ease-out; }
-  /* line 27, ../scss/utils/_extends.scss */
+  /* line 20, ../scss/utils/_extends.scss */
   #btn-search:hover, .lg-custom.lg-outer .lg-actions .lg-next:hover,
   .lg-custom.lg-outer .lg-actions .lg-prev:hover, .lg-custom.lg-outer .lg-toolbar .lg-icon:hover {
     color: #f1f3f3;
     background-color: #88c54f; }
 
-/* line 33, ../scss/utils/_extends.scss */
+/* line 26, ../scss/utils/_extends.scss */
 .mejs__custom.mejs__container .mejs__controls {
   transition: background-color .4s ease-out; }
-  /* line 35, ../scss/utils/_extends.scss */
+  /* line 28, ../scss/utils/_extends.scss */
   .mejs__custom.mejs__container .mejs__controls:hover {
     background-color: #c54f88; }
+
+/* line 33, ../scss/utils/_extends.scss */
+.sort-label .sort-selection, footer a {
+  transition: color .3s ease-out; }
+  /* line 35, ../scss/utils/_extends.scss */
+  .sort-label .sort-selection:hover, footer a:hover {
+    color: #cb6295; }
 
 /* line 40, ../scss/utils/_extends.scss */
 .lg-custom.lg-outer .lg-track {
@@ -83,6 +83,7 @@ img {
 
 /* line 44, ../scss/base/_base.scss */
 a {
+  outline: none;
   text-decoration: none;
   color: #545454; }
 
@@ -100,29 +101,45 @@ a {
 .outer-container {
   min-height: 100%;
   padding: 15px; }
+  @media (min-width: 768px) {
+    /* line 7, ../scss/layout/_containers.scss */
+    .outer-container {
+      padding: 20px; } }
+  @media (min-width: 1024px) {
+    /* line 7, ../scss/layout/_containers.scss */
+    .outer-container {
+      padding: 25px; } }
 
-/* line 14, ../scss/layout/_containers.scss */
-.search-container,
-.sort-container {
+/* line 20, ../scss/layout/_containers.scss */
+.search-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 60px;
   background-color: #dde1df; }
 
-/* line 23, ../scss/layout/_containers.scss */
+/* line 28, ../scss/layout/_containers.scss */
 .sort-container {
-  height: 30px;
-  padding-bottom: 7.5px; }
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px; }
+  @media (min-width: 480px) {
+    /* line 28, ../scss/layout/_containers.scss */
+    .sort-container {
+      padding: 15px 20px; } }
+  @media (min-width: 768px) {
+    /* line 28, ../scss/layout/_containers.scss */
+    .sort-container {
+      padding: 15px 25px; } }
 
-/* line 30, ../scss/layout/_containers.scss */
+/* line 42, ../scss/layout/_containers.scss */
 .card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   max-width: 1200px;
-  margin: 25px auto 50px; }
-  /* line 34, ../scss/layout/_containers.scss */
+  margin: 0 auto 50px; }
+  /* line 46, ../scss/layout/_containers.scss */
   .card-container #no-match {
     color: #b3bcb8; }
 
@@ -137,7 +154,19 @@ header {
   header #logo-spotify {
     width: 72px;
     padding: 8px; }
-  /* line 15, ../scss/layout/_header.scss */
+  @media (min-width: 480px) {
+    /* line 7, ../scss/layout/_header.scss */
+    header {
+      padding-left: 10px; } }
+  @media (min-width: 768px) {
+    /* line 7, ../scss/layout/_header.scss */
+    header {
+      padding-left: 20px; } }
+  @media (min-width: 1024px) {
+    /* line 7, ../scss/layout/_header.scss */
+    header {
+      padding-left: 25px; } }
+  /* line 24, ../scss/layout/_header.scss */
   header #title {
     font-size: 1.5rem;
     font-weight: 500;
@@ -170,21 +199,28 @@ header {
 
 /* line 7, ../scss/layout/_sort.scss */
 .sort-label {
-  display: inline-block;
-  margin-right: 10px; }
-  /* line 10, ../scss/layout/_sort.scss */
-  .sort-label.primary {
-    font-weight: 400;
-    margin-left: 5px; }
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #b3bcb8;
+  text-align: right;
+  padding-bottom: 15px; }
+  /* line 11, ../scss/layout/_sort.scss */
+  .sort-label .sort-selection {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #f1f3f3; }
+    /* line 14, ../scss/layout/_sort.scss */
+    .sort-label .sort-selection.active {
+      color: #6fa938; }
+  /* line 18, ../scss/layout/_sort.scss */
+  .sort-label ~ .sort-label {
+    padding-bottom: 0; }
 
-/* line 18, ../scss/layout/_sort.scss */
-.sort-input {
-  outline: none;
-  margin-right: 5px;
-  margin-bottom: 2px; }
-  /* line 23, ../scss/layout/_sort.scss */
-  .sort-input:checked + label {
-    text-decoration: underline; }
+/* line 23, ../scss/layout/_sort.scss */
+#search-term {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #f1f3f3; }
 
 /* line 5, ../scss/layout/_cards.scss */
 li.card {
@@ -282,11 +318,11 @@ li.card {
   position: absolute;
   z-index: 1080;
   top: 44%;
-  max-width: 640px;
   overflow-y: scroll;
   background-color: #1e2e35;
   color: #f1f3f3;
   text-align: left;
+  margin: 0 auto;
   padding: 0 15px; }
   @media (min-width: 480px) {
     /* line 41, ../scss/layout/_lightbox.scss */
@@ -322,43 +358,67 @@ li.card {
   color: #f1f3f3;
   margin: 0;
   padding: 10px 0 0; }
-/* line 85, ../scss/layout/_lightbox.scss */
+  @media (min-width: 480px) {
+    /* line 80, ../scss/layout/_lightbox.scss */
+    .lg-custom.lg-outer .lg-album-info p {
+      font-size: 1rem; } }
+/* line 88, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-album-info p:last-child {
   padding: 10px 0 10px; }
-/* line 88, ../scss/layout/_lightbox.scss */
+/* line 91, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-album-info span {
   font-size: 0.8rem;
   font-weight: 400;
   color: #b3bcb8; }
+  @media (min-width: 480px) {
+    /* line 91, ../scss/layout/_lightbox.scss */
+    .lg-custom.lg-outer .lg-album-info span {
+      font-size: 0.9rem; } }
 
-/* line 95, ../scss/layout/_lightbox.scss */
+/* line 101, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-track {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1px 0; }
-  /* line 99, ../scss/layout/_lightbox.scss */
+  /* line 105, ../scss/layout/_lightbox.scss */
   .lg-custom.lg-outer .lg-track p {
-    font-size: 0.8rem;
-    font-weight: 300;
-    color: #f1f3f3;
     padding-left: 8px;
     margin: 0; }
-  /* line 104, ../scss/layout/_lightbox.scss */
+  /* line 109, ../scss/layout/_lightbox.scss */
   .lg-custom.lg-outer .lg-track .lg-track-num {
     font-size: 0.8rem;
     font-weight: 400;
     color: #b3bcb8;
     width: 24px; }
-  /* line 108, ../scss/layout/_lightbox.scss */
+    @media (min-width: 480px) {
+      /* line 109, ../scss/layout/_lightbox.scss */
+      .lg-custom.lg-outer .lg-track .lg-track-num {
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: #b3bcb8; } }
+  /* line 116, ../scss/layout/_lightbox.scss */
   .lg-custom.lg-outer .lg-track .lg-track-name {
-    flex: 1; }
-  /* line 111, ../scss/layout/_lightbox.scss */
+    flex: 1;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: inherit; }
+    @media (min-width: 480px) {
+      /* line 116, ../scss/layout/_lightbox.scss */
+      .lg-custom.lg-outer .lg-track .lg-track-name {
+        font-size: 0.9rem; } }
+  /* line 123, ../scss/layout/_lightbox.scss */
   .lg-custom.lg-outer .lg-track .lg-track-duration {
     font-size: 0.8rem;
     font-weight: 400;
     color: #b3bcb8;
     padding-right: 5px; }
+    @media (min-width: 480px) {
+      /* line 123, ../scss/layout/_lightbox.scss */
+      .lg-custom.lg-outer .lg-track .lg-track-duration {
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: #b3bcb8; } }
 
 /* line 7, ../scss/layout/_footer.scss */
 footer {
@@ -371,8 +431,5 @@ footer {
   /* line 12, ../scss/layout/_footer.scss */
   footer .copyright-info {
     text-align: right; }
-  /* line 15, ../scss/layout/_footer.scss */
-  footer a:hover {
-    text-decoration: underline; }
 
 /*# sourceMappingURL=styles.css.map */

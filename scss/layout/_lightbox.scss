@@ -42,11 +42,11 @@
     position: absolute;
     z-index: 1080;
     top: 44%;
-    max-width: 640px;
     overflow-y: scroll;
     background-color: $color-bg-body;
     color: $color-text-light;
     text-align: left;
+    margin: 0 auto;
     padding: 0 $edge-sm;
     @include mq('mobile') {
       top: 50%;
@@ -81,12 +81,18 @@
       @include font-settings(0.9rem, 300, $color-text-light);
       margin: 0;
       padding: ($edge-sm - 5px) 0 0;
+      @include mq('mobile') {
+        font-size: 1rem;
+      }
     }
     p:last-child {
       padding: ($edge-sm - 5px) 0 $edge-sm - 5px;
     }
     span {
       @include font-settings(0.8rem, 400, $color-text-gray);
+      @include mq('mobile') {
+        font-size: 0.9rem;
+      }
     }
   }
 }
@@ -97,20 +103,29 @@
     padding: 1px 0;
     @extend %hover-li;
     p {
-      @include font-settings(0.8rem, 300, $color-text-light);
       padding-left: 8px;
       margin: 0;
     }
     .lg-track-num {
       @include font-settings(0.8rem, 400, $color-text-gray);
       width: 24px;
+      @include mq('mobile') {
+        @include font-settings(0.9rem, 300, $color-text-gray);
+      }
     }
     .lg-track-name {
       flex: 1;
+      @include font-settings(0.8rem, 300);
+      @include mq('mobile') {
+        font-size: 0.9rem;
+      }
     }
     .lg-track-duration {
       @include font-settings(0.8rem, 400, $color-text-gray);
       padding-right: 5px;
+      @include mq('mobile') {
+        @include font-settings(0.9rem, 300, $color-text-gray);
+      }
     }
   }
 }

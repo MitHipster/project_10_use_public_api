@@ -4,21 +4,38 @@
 const $cardContainer =  $('.card-container');
 const $searchField = $('#search');
 const $searchBtn = $('#btn-search');
+const $searchTerm = $('#search-term');
 const $sortContainer = $('.sort-container');
-const $sortInput = $('.sort-input');
+const $sortInput = $('.sort-selection');
 let searchResults = [];
 let lgDynamicEl = []; // Dynamic LightGallery dataset
 
-$sortInput.on('change', function () {
-  let sortOrder = $(this).val();
+// Change function to capture sort request
+$sortInput.on('click', function () {
+  let sortOrder = $(this).data('sort');
+  // Remove active class if applicable and add back class on clicked link
+  $sortInput.removeClass('active');
+  $(this).addClass('active');
+  // Clear any previous results
+  $cardContainer.empty();
+  lgDynamicEl = [];
+  // Call search function and pass sort order option
   searchResults.sort(sortYearReleased(sortOrder));
+  // Call function to create album cards
+  albumResults(searchResults);
+  // Call function to create album detail for LightGallery
+  albumObjArray(searchResults);
 });
 
 // Function to sort albums by year released
 let sortYearReleased = (sort) => {
   return function (a, b) {
-    let aYear = a.release_date.slice(0, 4);
-    let bYear = b.release_date.slice(0, 4);
+    let aYear = a.release_date;
+    let bYear = b.release_date;
+    // Include month in sort if provided else default month to 12
+    aYear = (aYear.length === 4) ? aYear + "12" : aYear.slice(0, 7).replace('-', '');
+    bYear = (bYear.length === 4) ? bYear + "12" : bYear.slice(0, 7).replace('-', '');
+    // If sort option is 'asc' sort ascending else default to descending
     if (sort === 'asc') {
       return ((aYear < bYear) ? -1 : ((aYear > bYear) ? 1 : 0));
     } else {
@@ -30,6 +47,7 @@ let sortYearReleased = (sort) => {
 // Click function to submit search term to Spotify API via AJAX request
 $searchBtn.on('click', function () {
   let searchValue = $searchField.val();
+  // Clear any previous results
   $cardContainer.empty();
   // AJAX request to retrieve search results from Spotify
   $.ajax({
@@ -45,6 +63,10 @@ $searchBtn.on('click', function () {
       if (results.albums.items.length !== 0) {
         // Call function to generate album list for subsequent AJAX request
         albumList = albumIdList(results.albums.items);
+        // Add search term to message
+        $searchTerm.text($searchField.val());
+        // Remove active class if applicable
+        $sortInput.removeClass('active');
         // Clear search field
         $searchField.val('');
         
@@ -55,18 +77,19 @@ $searchBtn.on('click', function () {
             ids: albumList
           },
           success: (results) => {
-            console.log(results);
             // Populate global array with returned albums
             searchResults = results.albums;
             // Call function to create album cards
             albumResults(results.albums);
             // Call function to create album detail for LightGallery
             albumObjArray(results.albums);
-            $sortContainer.delay(400).slideDown(400);
+            // Slide down sort options after a short delay
+            $sortContainer.show();
           } // end success callback function
         }); // end AJAX request
       // else diplay a message that no match was found
       } else {
+        $sortContainer.hide(0);
         $cardContainer.append('<p id="no-match">No match found. Please revise your search term.</p>');
       }
     } // end success callback
@@ -81,11 +104,12 @@ let albumResults = (albums) => {
     // Get medium-sized image with height and width ~300px
     let coverUrl = album.images[1].url;
     let albumName = album.name;
+    let releaseDate = album.release_date.slice(0, 4);
     // Call function to create artist name(s)
     artistName = artistList(album.artists);
 
     // Call function to generate HTML for the cards and append to the card container ul
-    $cardContainer.append(cardHtml(i, coverUrl, albumName, artistName));
+    $cardContainer.append(cardHtml(i, coverUrl, albumName, artistName, releaseDate));
   }); // end each album iterator
 }; // end albumResults function
 
@@ -127,7 +151,7 @@ let albumTracks = (tracks) => {
 }; // end albumTracks function
 
 // Function to generate the card HTML with album image and name, plus insert album ID as a data attribute in the More Info link
-let cardHtml = (i, coverUrl, albumName, artistName) => {
+let cardHtml = (i, coverUrl, albumName, artistName, releaseDate) => {
   // Create the HTML using a template literal
   let html =
       `<li class="card">
@@ -141,7 +165,7 @@ let cardHtml = (i, coverUrl, albumName, artistName) => {
             </div>
           </div>
           <figcaption class="card-name">${albumName}</figcaption>
-          <p class="card-artist">${artistName}</p>
+          <p class="card-artist">${artistName} (${releaseDate})</p>
         </figure>
       </li>`;
   
@@ -169,7 +193,7 @@ $cardContainer.on('click', '.btn-info', function (e) {
   e.preventDefault();
   // Get index data from button to set starting point for lightbox
   let i = $(this).data('index');
-  console.log(i);
+
   // LightGallery plugin
   $(this).lightGallery({
     dynamic: true,
@@ -178,7 +202,7 @@ $cardContainer.on('click', '.btn-info', function (e) {
     index: i,
     mode: 'lg-fade',
     speed: 200,
-    width: '640px',
+    width: '560px',
     hideBarsDelay: 600000,
     addClass: 'lg-custom',
     getCaptionFromTitleOrAlt: false,
@@ -219,7 +243,7 @@ let albumObjArray = (albums) => {
             <p class="lg-artist"><span>Artist: </span>${artistName}</p>
             <p class="lg-label"><span>Label: </span>${album.label}</p>
             <p class="lg-release-date"><span>Released: </span>${albumRelease} (${album.album_type})</p>
-            <p><span>Tracks: </span>Sample, #, Title, Duration</p>
+            <p><span>Tracks: </span></p>
           </div>
           <ul class="lg-track-info">
             ${trackList}

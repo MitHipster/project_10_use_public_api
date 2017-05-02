@@ -2,25 +2,24 @@
 // Sort Input Styles
 //============================================================
 
-//----------- Labels --------------
+//----------- Sort Options -------------
 
 .sort-label {
-  display: inline-block;
-  margin-right: $edge-sm - 5px;
-  &.primary {
-    font-weight: 400;
-    margin-left: $edge-sm - 10px;
+  @include font-settings(0.9rem, 300, $color-text-gray);
+  text-align: right;
+  padding-bottom: $edge-sm;
+  .sort-selection {
+    @include font-settings($size: 1rem, $color: $color-text-light);
+    @extend %hover-link;
+    &.active {
+      color: $color-bg-button;
+    }
+  }
+  ~ .sort-label {
+    padding-bottom: 0;
   }
 }
 
-//----------- Inputs --------------
-
-.sort-input {
-  outline: none;
-  margin-right: $edge-sm - 10px;
-  margin-bottom: 2px;
-  @extend %focus-radio;
-  &:checked + label {
-    text-decoration: underline;
-  }
+#search-term {
+  @include font-settings($size: 1rem, $color: $color-text-light);
 }

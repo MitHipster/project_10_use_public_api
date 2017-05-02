@@ -12,6 +12,15 @@ header {
     width: 72px;
     padding: 8px;
   }
+  @include mq('mobile') {
+    padding-left: $edge-sm - 5px;
+  }
+  @include mq('tablet') {
+    padding-left: $edge-med;
+  }
+  @include mq('desktop') {
+    padding-left: $edge-lg;
+  }
   #title {
     @include font-settings(1.5rem, 500)
   }

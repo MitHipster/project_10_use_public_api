@@ -12,7 +12,7 @@ footer {
   .copyright-info {
     text-align: right;
   }
-  a:hover {
-    text-decoration: underline;
+  a {
+    @extend %hover-link;
   }
 }

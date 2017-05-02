@@ -7,12 +7,17 @@
 .outer-container {
   min-height: 100%;
   padding: $edge-sm;
+  @include mq('tablet') {
+    padding: $edge-med;
+  }
+  @include mq('desktop') {
+    padding: $edge-lg;
+  }
 }
 
 //------------ Search -------------
 
-.search-container,
-.sort-container {
+.search-container {
   @include display-flex($justify: center, $align: center);
   height: 60px;
   background-color: $color-bg-search;
@@ -21,8 +26,15 @@
 //------------- Sort --------------
 
 .sort-container {
-  height: 30px;
-  padding-bottom: $edge-sm / 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $edge-sm;
+  @include mq('mobile') {
+    padding: $edge-sm $edge-med;
+  }
+  @include mq('tablet') {
+    padding: $edge-sm $edge-lg;
+  }
 }
 
 //------------ Cards --------------
@@ -30,7 +42,7 @@
 .card-container {
   @include display-flex($wrap: wrap, $justify: space-around);
   max-width: 1200px;
-  margin: 25px auto 50px;
+  margin: 0 auto ($edge-lg * 2);
   #no-match {
     color: $color-text-gray;
   }
