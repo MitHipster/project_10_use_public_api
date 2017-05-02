@@ -1,0 +1,26 @@
+//============================================================
+// Sort Input Styles
+//============================================================
+
+//----------- Labels --------------
+
+.sort-label {
+  display: inline-block;
+  margin-right: $edge-sm - 5px;
+  &.primary {
+    font-weight: 400;
+    margin-left: $edge-sm - 10px;
+  }
+}
+
+//----------- Inputs --------------
+
+.sort-input {
+  outline: none;
+  margin-right: $edge-sm - 10px;
+  margin-bottom: 2px;
+  @extend %focus-radio;
+  &:checked + label {
+    text-decoration: underline;
+  }
+}

@@ -4,6 +4,7 @@
 const $cardContainer =  $('.card-container');
 const $searchField = $('#search');
 const $searchBtn = $('#btn-search');
+const $sortContainer = $('.sort-container');
 let lgDynamicEl = []; // Dynamic LightGallery dataset
 
 // Click function to submit search term to Spotify API via AJAX request
@@ -23,8 +24,6 @@ $searchBtn.on('click', function () {
       console.log(results);
       // If albums are returned continue else show no results found message
       if (results.albums.items.length !== 0) {
-        // Call function to create album cards
-        albumResults(results.albums.items);
         // Call function to generate album list for subsequent AJAX request
         albumList = albumIdList(results.albums.items);
         // Clear search field
@@ -38,7 +37,11 @@ $searchBtn.on('click', function () {
           },
           success: (results) => {
             console.log(results);
+            // Call function to create album cards
+            albumResults(results.albums);
+            // Call function to create album detail for LightGallery
             albumObjArray(results.albums);
+            $sortContainer.delay(400).slideDown(400);
           } // end success callback function
         }); // end AJAX request
       // else diplay a message that no match was found
@@ -195,7 +198,7 @@ let albumObjArray = (albums) => {
             <p class="lg-artist"><span>Artist: </span>${artistName}</p>
             <p class="lg-label"><span>Label: </span>${album.label}</p>
             <p class="lg-release-date"><span>Released: </span>${albumRelease} (${album.album_type})</p>
-            <p><span>Tracks: </span></p>
+            <p><span>Tracks: </span>Sample, #, Title, Duration</p>
           </div>
           <ul class="lg-track-info">
             ${trackList}

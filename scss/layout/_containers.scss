@@ -11,10 +11,18 @@
 
 //------------ Search -------------
 
-.search-container {
+.search-container,
+.sort-container {
   @include display-flex($justify: center, $align: center);
   height: 60px;
   background-color: $color-bg-search;
+}
+
+//------------- Sort --------------
+
+.sort-container {
+  height: 30px;
+  padding-bottom: $edge-sm / 2;
 }
 
 //------------ Cards --------------
@@ -22,7 +30,7 @@
 .card-container {
   @include display-flex($wrap: wrap, $justify: space-around);
   max-width: 1200px;
-  margin: 50px auto;
+  margin: 25px auto 50px;
   #no-match {
     color: $color-text-gray;
   }

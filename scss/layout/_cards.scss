@@ -41,7 +41,7 @@ li.card {
   .btn-info {
     text-transform: uppercase;
     color: $color-btn;
-    border: solid 2px $color-btn;
+    border: 2px solid $color-btn;
     padding: 12px 24px;
     opacity: 0;
     transition: opacity 0.4s ease, background-color 0.4s ease;
