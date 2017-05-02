@@ -5,7 +5,27 @@ const $cardContainer =  $('.card-container');
 const $searchField = $('#search');
 const $searchBtn = $('#btn-search');
 const $sortContainer = $('.sort-container');
+const $sortInput = $('.sort-input');
+let searchResults = [];
 let lgDynamicEl = []; // Dynamic LightGallery dataset
+
+$sortInput.on('change', function () {
+  let sortOrder = $(this).val();
+  searchResults.sort(sortYearReleased(sortOrder));
+});
+
+// Function to sort albums by year released
+let sortYearReleased = (sort) => {
+  return function (a, b) {
+    let aYear = a.release_date.slice(0, 4);
+    let bYear = b.release_date.slice(0, 4);
+    if (sort === 'asc') {
+      return ((aYear < bYear) ? -1 : ((aYear > bYear) ? 1 : 0));
+    } else {
+      return ((aYear < bYear) ? 1 : ((aYear > bYear) ? -1 : 0));
+    }
+  };
+};
 
 // Click function to submit search term to Spotify API via AJAX request
 $searchBtn.on('click', function () {
@@ -21,7 +41,6 @@ $searchBtn.on('click', function () {
     },
     success: (results) => {
       let albumList = '';
-      console.log(results);
       // If albums are returned continue else show no results found message
       if (results.albums.items.length !== 0) {
         // Call function to generate album list for subsequent AJAX request
@@ -37,6 +56,8 @@ $searchBtn.on('click', function () {
           },
           success: (results) => {
             console.log(results);
+            // Populate global array with returned albums
+            searchResults = results.albums;
             // Call function to create album cards
             albumResults(results.albums);
             // Call function to create album detail for LightGallery
