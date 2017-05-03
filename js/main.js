@@ -8,6 +8,7 @@ const $searchTerm = $('#search-term');
 const $sortContainer = $('.sort-container');
 const $sortInput = $('.sort-selection');
 let searchResults = [];
+let randomUsers = [];
 let lgDynamicEl = []; // Dynamic LightGallery dataset
 
 // Click function to submit search term to Spotify API via AJAX request
@@ -53,6 +54,19 @@ $searchBtn.on('click', function () {
             $sortContainer.show();
           } // end success callback function
         }); // end AJAX request
+        // AJAX request to retrieve random user information
+        $.ajax({
+          url: 'https://randomuser.me/api/',
+          data: {
+            results: 200,
+            inc: 'picture,login',
+            nat: 'us'
+          },
+          success: function(users) {
+            // Populate global array with returned users
+            randomUsers = users.results;
+          }
+        }); // end AJAX random user request
       // else diplay a message that no match was found
       } else {
         $sortContainer.hide(0);
