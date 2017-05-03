@@ -262,6 +262,9 @@ let albumObjArray = (albums) => {
           <ul class="lg-track-info">
             ${trackList}
           </ul>
+          <ul class="lg-comments">
+            <li data-lorem="2-4p"></li>
+          </ul>
         </div>`
     };
     lgDynamicEl.push(obj);
