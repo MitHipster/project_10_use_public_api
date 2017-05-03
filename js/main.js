@@ -1,5 +1,5 @@
 /*jslint esversion: 6, browser: true*/
-/*global window, console, $, jQuery, alert*/
+/*global window, console, $, jQuery, Lorem, alert*/
 
 const $cardContainer =  $('.card-container');
 const $searchField = $('#search');
@@ -9,6 +9,11 @@ const $sortContainer = $('.sort-container');
 const $sortInput = $('.sort-selection');
 let searchResults = [];
 let randomUsers = [];
+const randomUserCnt = 250;
+const commentsMin = 2;
+const commentsMax = 10;
+const wordsMin = 10;
+const wordsMax = 25;
 let lgDynamicEl = []; // Dynamic LightGallery dataset
 
 // Click function to submit search term to Spotify API via AJAX request
@@ -46,34 +51,36 @@ $searchBtn.on('click', function () {
           success: (results) => {
             // Populate global array with returned albums
             searchResults = results.albums;
-            // Call function to create album cards
-            albumResults(results.albums);
-            // Call function to create album detail for LightGallery
-            albumObjArray(results.albums);
-            // Show sort options and used search term
-            $sortContainer.show();
-          } // end success callback function
-        }); // end AJAX request
-        // AJAX request to retrieve random user information
-        $.ajax({
-          url: 'https://randomuser.me/api/',
-          data: {
-            results: 200,
-            inc: 'picture,login',
-            nat: 'us'
-          },
-          success: function(users) {
-            // Populate global array with returned users
-            randomUsers = users.results;
-          }
-        }); // end AJAX random user request
+            // AJAX request to retrieve random user information
+            $.ajax({
+              url: 'https://randomuser.me/api/',
+              data: {
+                results: randomUserCnt,
+                inc: 'picture,login',
+                nat: 'us'
+              },
+              success: function(users) {
+                // Populate global array with returned users
+                randomUsers = users.results;
+                //Call function to add random users and comments into the Spotify search results
+                addCommentBlock(searchResults, randomUsers);
+                // Call function to create album cards
+                albumResults(searchResults);
+                // Call function to create album detail for LightGallery
+                albumObjArray(searchResults);
+                // Show sort options and used search term
+                $sortContainer.show();
+              } // end random user success callback function
+            }); // end random user AJAX request
+          } // end second Spotify success callback function
+        }); // end second Spotify AJAX request
       // else diplay a message that no match was found
       } else {
         $sortContainer.hide(0);
         $cardContainer.append('<p id="no-match">No match found. Please revise your search term.</p>');
       }
-    } // end success callback
-  }); // end AJAX request
+    } // end first Spotify success callback
+  }); // end first Spotify AJAX request
 });
 
 // Click function to capture sort request
@@ -136,6 +143,33 @@ let albumIdList = (albums) => {
   return albumList.slice(0, -1);
 }; // end albumIdList function
 
+// Function to add random users and comments to the returned Spotify object
+let addCommentBlock = (albums, users) => {
+  // Iterate over search results and add a random number of users and comments to each album object
+  $.each(albums, (i, album) => {
+    // Get a random number of comments to create
+    let comments = randomItemRange(commentsMin, commentsMax);
+    album.users = [];
+    // Loop through comment count and randomly select users from the random users object
+    for (let c = 0; c < comments; c++) {
+      // Get a random number for user
+      let user = randomItemRange(0, randomUserCnt - 1);
+      // Get a random number of words to combine
+      let words = randomItemRange(wordsMin, wordsMax);
+      // Call Lorem plugin to generate a random comment
+      let commentText = Lorem.prototype.createText(words, 3);
+      // Create user object
+      let obj = {
+        image: users[user].picture.thumbnail,
+        name: users[user].login.username,
+        comment: sentence(commentText)
+      };
+      // Add user object to new users array
+      album.users[c] = obj;
+    } // for comments loop
+  });// end each album iterator
+}; // end albumIdList function
+
 // Iterate over search results to create a card that holds the album information for each object
 let albumResults = (albums) => {
   let artistName = '';
@@ -186,23 +220,6 @@ let cardHtml = (i, coverUrl, albumName, artistName, releaseDate) => {
   return html;
 }; // end cardHtml function
 
-// Function to sort albums by year released
-let sortYearReleased = (sort) => {
-  return function (a, b) {
-    let aYear = a.release_date;
-    let bYear = b.release_date;
-    // Include month in sort if provided else default month to 12
-    aYear = (aYear.length === 4) ? aYear + "12" : aYear.slice(0, 7).replace('-', '');
-    bYear = (bYear.length === 4) ? bYear + "12" : bYear.slice(0, 7).replace('-', '');
-    // If sort option is 'asc' sort ascending else default to descending
-    if (sort === 'asc') {
-      return ((aYear < bYear) ? -1 : ((aYear > bYear) ? 1 : 0));
-    } else {
-      return ((aYear < bYear) ? 1 : ((aYear > bYear) ? -1 : 0));
-    }
-  };
-};
-
 // Iterate over album tracks to create a list for the More Info area
 let albumTracks = (tracks) => {
   let html = '';
@@ -234,11 +251,39 @@ let trackHtml = (trackPreview, trackNum , trackName, trackDuration) => {
   return html;
 }; // end trackHtml function
 
+// Iterate over user comments to create a list for the More Info area
+let albumComments = (users) => {
+  let html = '';
+  $.each(users, (i, user) => {
+    let userImage = user.image;
+    let userName = user.name;
+    let userComment = user.comment;
+
+    // Call function to generate HTML for user comments
+    html += commentHtml(userImage, userName , userComment);
+  }); // end each user iterator
+  return html;
+}; // end albumComments function
+
+
+// Function to generate the comment HTML with user image, user name and random lorem ipsum text
+let commentHtml = (userImage, userName, userComment) => {
+  // Create the HTML for user comment using a template literal
+  let html =
+      `<li class="lg-comment">
+        <img class="lg-user-image" src="${userImage}" alt="${userName}'s profile image">
+        <p class="lg-user-comment"><span class="lg-user-name">${userName} </span>${userComment}</p>
+      </li>`;
+  
+  return html;
+}; // end commentHtml function
+
 // Function to create an array of album objects for use as dynamic LightGallery dataset
 let albumObjArray = (albums) => {
   let obj = {};
   let artistName = '';
   let trackList = '';
+  let commentList = '';
   // Clear array of earlier search results
   lgDynamicEl = [];
   $.each(albums, (i, album) => {
@@ -248,6 +293,8 @@ let albumObjArray = (albums) => {
     artistName = artistList(album.artists);
     // Call function to create album tracks
     trackList = albumTracks(album.tracks.items);
+    // Call function to create user comments
+    commentList = albumComments(album.users);
     obj = {
       'src': coverUrl,
       'subHtml': 
@@ -259,17 +306,38 @@ let albumObjArray = (albums) => {
             <p class="lg-release-date"><span>Released: </span>${albumRelease} (${album.album_type})</p>
             <p><span>Tracks: </span></p>
           </div>
-          <ul class="lg-track-info">
+          <ul class="lg-track-container">
             ${trackList}
           </ul>
-          <ul class="lg-comments">
-            <li data-lorem="2-4p"></li>
+          <ul class="lg-comments-container">
+            ${commentList}
           </ul>
         </div>`
     };
     lgDynamicEl.push(obj);
   }); // end each album iterator
 }; // end albumObjArray function
+
+//============================================================
+// Helper Functions
+//============================================================
+
+// Function to sort albums by year released
+let sortYearReleased = (sort) => {
+  return function (a, b) {
+    let aYear = a.release_date;
+    let bYear = b.release_date;
+    // Include month in sort if provided else default month to 12
+    aYear = (aYear.length === 4) ? aYear + "12" : aYear.slice(0, 7).replace('-', '');
+    bYear = (bYear.length === 4) ? bYear + "12" : bYear.slice(0, 7).replace('-', '');
+    // If sort option is 'asc' sort ascending else default to descending
+    if (sort === 'asc') {
+      return ((aYear < bYear) ? -1 : ((aYear > bYear) ? 1 : 0));
+    } else {
+      return ((aYear < bYear) ? 1 : ((aYear > bYear) ? -1 : 0));
+    }
+  };
+};
 
 // Function to convert track duration from ms to minutes:seconds
 let msConvert = (duration) => {
@@ -281,3 +349,12 @@ let msConvert = (duration) => {
   return minutes + ":" + seconds;
 }; // end msConvert function
 
+// Function to return a random number for creating faux user comments
+let randomItemRange = (minItems, maxItems) => {
+  return Math.floor(Math.random() * (maxItems - minItems + 1)) + minItems;
+}; // end randomItemRange function
+
+// Function to capitalize first letter of string and add ending punctuation
+let sentence = (comment) => {
+  return comment.charAt(0).toUpperCase() + comment.slice(1) + '.';
+}; // end sentence function
