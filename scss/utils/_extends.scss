@@ -37,7 +37,7 @@
   }
 }
 
-%hover-li {
+%hover-li-track {
   transition: background-color .4s ease-out;
   &:hover {
     background-color: darken($color-border, 15%);

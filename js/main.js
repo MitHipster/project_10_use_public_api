@@ -272,7 +272,13 @@ let commentHtml = (userImage, userName, userComment) => {
   let html =
       `<li class="lg-comment">
         <img class="lg-user-image" src="${userImage}" alt="${userName}'s profile image">
-        <p class="lg-user-comment"><span class="lg-user-name">${userName} </span>${userComment}</p>
+        <div>
+          <div class="lg-comment-header">
+            <p class="lg-user-name">${userName}</p>
+            <p class="lg-posted"><img src="icons/icon-clock.svg" alt=""> hrs ago</p>
+          </div>
+          <p class="lg-user-comment">${userComment}</p>
+        </div>
       </li>`;
   
   return html;
@@ -309,7 +315,8 @@ let albumObjArray = (albums) => {
           <ul class="lg-track-container">
             ${trackList}
           </ul>
-          <ul class="lg-comments-container">
+          <p><span>Comments: </span></p>
+          <ul class="lg-comment-container">
             ${commentList}
           </ul>
         </div>`
@@ -349,7 +356,7 @@ let msConvert = (duration) => {
   return minutes + ":" + seconds;
 }; // end msConvert function
 
-// Function to return a random number for creating faux user comments
+// Function to return a random number for creating simulated user comments
 let randomItemRange = (minItems, maxItems) => {
   return Math.floor(Math.random() * (maxItems - minItems + 1)) + minItems;
 }; // end randomItemRange function

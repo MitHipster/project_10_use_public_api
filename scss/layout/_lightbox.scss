@@ -3,13 +3,15 @@
 //============================================================
 
 .lg-on {
-  overflow: hidden;
+  overflow: hidden; // remove scrollbars from main page
 }
 
 .lg-backdrop {
   background-color: $color-bg-body;
 }
       
+//--------- Main Styling ----------
+
 .lg-custom.lg-outer {
   .lg-actions {
     .lg-next,
@@ -75,58 +77,98 @@
   }
 }
 
-.lg-custom.lg-outer {
-  .lg-album-info {
-    p {
-      @include font-settings(0.9rem, 300, $color-text-light);
-      margin: 0;
-      padding: ($edge-sm - 5px) 0 0;
-      @include mq('mobile') {
-        font-size: 1rem;
-      }
-    }
-    p:last-child {
-      padding: ($edge-sm - 5px) 0 $edge-sm - 5px;
-    }
-    span {
-      @include font-settings(0.8rem, 400, $color-text-gray);
-      @include mq('mobile') {
-        font-size: 0.9rem;
-      }
+//-------- Album details ----------
+
+.lg-album-details {
+  span {
+    @include font-settings(0.8rem, 400, $color-text-gray);
+    @include mq('mobile') {
+      font-size: 0.9rem;
     }
   }
 }
 
-.lg-custom.lg-outer {
-  .lg-track {
-    @include display-flex($justify: space-between, $align: center);
-    padding: 1px 0;
-    @extend %hover-li;
-    p {
-      padding-left: 8px;
-      margin: 0;
+//-------- Album Summary ----------
+
+.lg-album-info {
+  p {
+    @include font-settings(0.9rem, 300, $color-text-light);
+    margin: 0;
+    padding: ($edge-sm - 5px) 0 0;
+    @include mq('mobile') {
+      font-size: 1rem;
     }
-    .lg-track-num {
-      @include font-settings(0.8rem, 400, $color-text-gray);
-      width: 24px;
-      @include mq('mobile') {
-        @include font-settings(0.9rem, 300, $color-text-gray);
-      }
+  }
+  p:last-child {
+    padding: ($edge-sm - 5px) 0 $edge-sm - 5px;
+  }
+}
+
+//------------ Tracks -------------
+
+.lg-track {
+  @include display-flex($justify: space-between, $align: center);
+  padding: 1px 0;
+  @extend %hover-li-track;
+  p {
+    padding-left: 8px;
+    margin: 0;
+  }
+  .lg-track-num {
+    @include font-settings(0.8rem, 400, $color-text-gray);
+    width: 24px;
+    @include mq('mobile') {
+      @include font-settings(0.9rem, 300, $color-text-gray);
     }
-    .lg-track-name {
-      flex: 1;
-      @include font-settings(0.8rem, 300);
-      @include mq('mobile') {
-        font-size: 0.9rem;
-      }
+  }
+  .lg-track-name {
+    flex: 1;
+    @include font-settings(0.8rem, 300);
+    @include mq('mobile') {
+      font-size: 0.9rem;
     }
-    .lg-track-duration {
-      @include font-settings(0.8rem, 400, $color-text-gray);
-      padding-right: 5px;
-      @include mq('mobile') {
-        @include font-settings(0.9rem, 300, $color-text-gray);
-      }
+  }
+  .lg-track-duration {
+    @include font-settings(0.8rem, 400, $color-text-gray);
+    padding-right: 5px;
+    @include mq('mobile') {
+      @include font-settings(0.9rem, 300, $color-text-gray);
     }
   }
 }
 
+//----------- Comments ------------
+
+.lg-comment {
+  @include display-flex($align: flex-start);
+  margin-top: $edge-lg;
+  padding-right: 5px;
+  .lg-user-image {
+    margin-right: $edge-sm;
+  }
+  .lg-user-comment {
+    @include font-settings(0.8rem, 300);
+    @include mq('mobile') {
+      @include font-settings(0.9rem, 200);
+    }
+  }
+}
+
+.lg-comment-header {
+  @include display-flex($justify: space-between);
+  border-bottom: 1px solid $color-bg-button;
+  padding-bottom: 4px;
+  .lg-user-name,
+  .lg-posted {
+    margin: 0;
+    @include font-settings(0.8rem, 400, $color-text-gray);
+    @include mq('mobile') {
+      @include font-settings(0.9rem, 300, $color-text-gray);
+    }
+  }
+  img {
+    width: 14px;
+    height: 14px;
+    margin-bottom: -3px;
+  }
+}

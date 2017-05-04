@@ -34,10 +34,10 @@ body {
     color: #cb6295; }
 
 /* line 40, ../scss/utils/_extends.scss */
-.lg-custom.lg-outer .lg-track {
+.lg-track {
   transition: background-color .4s ease-out; }
   /* line 42, ../scss/utils/_extends.scss */
-  .lg-custom.lg-outer .lg-track:hover {
+  .lg-track:hover {
     background-color: #702549; }
 
 /* line 5, ../scss/base/_base.scss */
@@ -142,6 +142,14 @@ a {
   /* line 46, ../scss/layout/_containers.scss */
   .card-container #no-match {
     color: #b3bcb8; }
+
+/* line 53, ../scss/layout/_containers.scss */
+.lg-track-container {
+  margin-bottom: 30px; }
+
+/* line 59, ../scss/layout/_containers.scss */
+.lg-comment-container {
+  margin-bottom: 50px; }
 
 /* line 7, ../scss/layout/_header.scss */
 header {
@@ -289,31 +297,31 @@ li.card {
 .lg-backdrop {
   background-color: #1e2e35; }
 
-/* line 15, ../scss/layout/_lightbox.scss */
+/* line 17, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-actions .lg-next,
 .lg-custom.lg-outer .lg-actions .lg-prev {
   top: 25%;
   background-color: #6fa938;
   color: #f1f3f3; }
   @media (min-width: 480px) {
-    /* line 15, ../scss/layout/_lightbox.scss */
+    /* line 17, ../scss/layout/_lightbox.scss */
     .lg-custom.lg-outer .lg-actions .lg-next,
     .lg-custom.lg-outer .lg-actions .lg-prev {
       top: 28.5%; } }
-/* line 26, ../scss/layout/_lightbox.scss */
+/* line 28, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-actions .lg-next {
   right: 10px; }
-/* line 29, ../scss/layout/_lightbox.scss */
+/* line 31, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-actions .lg-prev {
   left: 10px; }
-/* line 33, ../scss/layout/_lightbox.scss */
+/* line 35, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-toolbar {
   background-color: #dde1df; }
-  /* line 35, ../scss/layout/_lightbox.scss */
+  /* line 37, ../scss/layout/_lightbox.scss */
   .lg-custom.lg-outer .lg-toolbar .lg-icon {
     background-color: #6fa938;
     color: #f1f3f3; }
-/* line 41, ../scss/layout/_lightbox.scss */
+/* line 43, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-sub-html {
   position: absolute;
   z-index: 1080;
@@ -325,100 +333,148 @@ li.card {
   margin: 0 auto;
   padding: 0 15px; }
   @media (min-width: 480px) {
-    /* line 41, ../scss/layout/_lightbox.scss */
+    /* line 43, ../scss/layout/_lightbox.scss */
     .lg-custom.lg-outer .lg-sub-html {
       top: 50%; } }
-/* line 55, ../scss/layout/_lightbox.scss */
+/* line 57, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer #lg-counter {
   font-size: 1rem;
   font-weight: 400;
   color: #545454;
   padding-top: 16px; }
-/* line 61, ../scss/layout/_lightbox.scss */
+/* line 63, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-item:before,
 .lg-custom.lg-outer .lg-img-wrap:before {
   height: 25%; }
   @media (min-width: 480px) {
-    /* line 61, ../scss/layout/_lightbox.scss */
+    /* line 63, ../scss/layout/_lightbox.scss */
     .lg-custom.lg-outer .lg-item:before,
     .lg-custom.lg-outer .lg-img-wrap:before {
       height: 28.5%; } }
-/* line 69, ../scss/layout/_lightbox.scss */
+/* line 71, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-img-wrap .lg-image {
   max-width: 300px; }
   @media (min-width: 480px) {
-    /* line 69, ../scss/layout/_lightbox.scss */
+    /* line 71, ../scss/layout/_lightbox.scss */
     .lg-custom.lg-outer .lg-img-wrap .lg-image {
       max-width: 400px; } }
 
-/* line 80, ../scss/layout/_lightbox.scss */
-.lg-custom.lg-outer .lg-album-info p {
+/* line 83, ../scss/layout/_lightbox.scss */
+.lg-album-details span {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #b3bcb8; }
+  @media (min-width: 480px) {
+    /* line 83, ../scss/layout/_lightbox.scss */
+    .lg-album-details span {
+      font-size: 0.9rem; } }
+
+/* line 94, ../scss/layout/_lightbox.scss */
+.lg-album-info p {
   font-size: 0.9rem;
   font-weight: 300;
   color: #f1f3f3;
   margin: 0;
   padding: 10px 0 0; }
   @media (min-width: 480px) {
-    /* line 80, ../scss/layout/_lightbox.scss */
-    .lg-custom.lg-outer .lg-album-info p {
+    /* line 94, ../scss/layout/_lightbox.scss */
+    .lg-album-info p {
       font-size: 1rem; } }
-/* line 88, ../scss/layout/_lightbox.scss */
-.lg-custom.lg-outer .lg-album-info p:last-child {
+/* line 102, ../scss/layout/_lightbox.scss */
+.lg-album-info p:last-child {
   padding: 10px 0 10px; }
-/* line 91, ../scss/layout/_lightbox.scss */
-.lg-custom.lg-outer .lg-album-info span {
-  font-size: 0.8rem;
-  font-weight: 400;
-  color: #b3bcb8; }
-  @media (min-width: 480px) {
-    /* line 91, ../scss/layout/_lightbox.scss */
-    .lg-custom.lg-outer .lg-album-info span {
-      font-size: 0.9rem; } }
 
-/* line 101, ../scss/layout/_lightbox.scss */
-.lg-custom.lg-outer .lg-track {
+/* line 109, ../scss/layout/_lightbox.scss */
+.lg-track {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1px 0; }
-  /* line 105, ../scss/layout/_lightbox.scss */
-  .lg-custom.lg-outer .lg-track p {
+  /* line 113, ../scss/layout/_lightbox.scss */
+  .lg-track p {
     padding-left: 8px;
     margin: 0; }
-  /* line 109, ../scss/layout/_lightbox.scss */
-  .lg-custom.lg-outer .lg-track .lg-track-num {
+  /* line 117, ../scss/layout/_lightbox.scss */
+  .lg-track .lg-track-num {
     font-size: 0.8rem;
     font-weight: 400;
     color: #b3bcb8;
     width: 24px; }
     @media (min-width: 480px) {
-      /* line 109, ../scss/layout/_lightbox.scss */
-      .lg-custom.lg-outer .lg-track .lg-track-num {
+      /* line 117, ../scss/layout/_lightbox.scss */
+      .lg-track .lg-track-num {
         font-size: 0.9rem;
         font-weight: 300;
         color: #b3bcb8; } }
-  /* line 116, ../scss/layout/_lightbox.scss */
-  .lg-custom.lg-outer .lg-track .lg-track-name {
+  /* line 124, ../scss/layout/_lightbox.scss */
+  .lg-track .lg-track-name {
     flex: 1;
     font-size: 0.8rem;
     font-weight: 300;
     color: inherit; }
     @media (min-width: 480px) {
-      /* line 116, ../scss/layout/_lightbox.scss */
-      .lg-custom.lg-outer .lg-track .lg-track-name {
+      /* line 124, ../scss/layout/_lightbox.scss */
+      .lg-track .lg-track-name {
         font-size: 0.9rem; } }
-  /* line 123, ../scss/layout/_lightbox.scss */
-  .lg-custom.lg-outer .lg-track .lg-track-duration {
+  /* line 131, ../scss/layout/_lightbox.scss */
+  .lg-track .lg-track-duration {
     font-size: 0.8rem;
     font-weight: 400;
     color: #b3bcb8;
     padding-right: 5px; }
     @media (min-width: 480px) {
-      /* line 123, ../scss/layout/_lightbox.scss */
-      .lg-custom.lg-outer .lg-track .lg-track-duration {
+      /* line 131, ../scss/layout/_lightbox.scss */
+      .lg-track .lg-track-duration {
         font-size: 0.9rem;
         font-weight: 300;
         color: #b3bcb8; } }
+
+/* line 142, ../scss/layout/_lightbox.scss */
+.lg-comment {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 25px;
+  padding-right: 5px; }
+  /* line 146, ../scss/layout/_lightbox.scss */
+  .lg-comment .lg-user-image {
+    margin-right: 15px; }
+  /* line 149, ../scss/layout/_lightbox.scss */
+  .lg-comment .lg-user-comment {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: inherit; }
+    @media (min-width: 480px) {
+      /* line 149, ../scss/layout/_lightbox.scss */
+      .lg-comment .lg-user-comment {
+        font-size: 0.9rem;
+        font-weight: 200;
+        color: inherit; } }
+
+/* line 157, ../scss/layout/_lightbox.scss */
+.lg-comment-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #6fa938;
+  padding-bottom: 4px; }
+  /* line 161, ../scss/layout/_lightbox.scss */
+  .lg-comment-header .lg-user-name,
+  .lg-comment-header .lg-posted {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #b3bcb8; }
+    @media (min-width: 480px) {
+      /* line 161, ../scss/layout/_lightbox.scss */
+      .lg-comment-header .lg-user-name,
+      .lg-comment-header .lg-posted {
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: #b3bcb8; } }
+  /* line 169, ../scss/layout/_lightbox.scss */
+  .lg-comment-header img {
+    width: 14px;
+    height: 14px;
+    margin-bottom: -3px; }
 
 /* line 7, ../scss/layout/_footer.scss */
 footer {
