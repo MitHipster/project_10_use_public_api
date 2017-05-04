@@ -4,6 +4,7 @@ body {
 
 /* line 9, ../scss/utils/_extends.scss */
 #search, #btn-search {
+  -webkit-transition: box-shadow .4s ease-out;
   transition: box-shadow .4s ease-out; }
   /* line 11, ../scss/utils/_extends.scss */
   #search:focus, #btn-search:focus {
@@ -12,6 +13,7 @@ body {
 /* line 18, ../scss/utils/_extends.scss */
 #btn-search, .lg-custom.lg-outer .lg-actions .lg-next,
 .lg-custom.lg-outer .lg-actions .lg-prev, .lg-custom.lg-outer .lg-toolbar .lg-icon {
+  -webkit-transition: background-color .4s ease-out;
   transition: background-color .4s ease-out; }
   /* line 20, ../scss/utils/_extends.scss */
   #btn-search:hover, .lg-custom.lg-outer .lg-actions .lg-next:hover,
@@ -21,6 +23,7 @@ body {
 
 /* line 26, ../scss/utils/_extends.scss */
 .mejs__custom.mejs__container .mejs__controls {
+  -webkit-transition: background-color .4s ease-out;
   transition: background-color .4s ease-out; }
   /* line 28, ../scss/utils/_extends.scss */
   .mejs__custom.mejs__container .mejs__controls:hover {
@@ -28,6 +31,7 @@ body {
 
 /* line 33, ../scss/utils/_extends.scss */
 .sort-label .sort-selection, .lg-nav .lg-section, footer a {
+  -webkit-transition: color .3s ease-out;
   transition: color .3s ease-out; }
   /* line 35, ../scss/utils/_extends.scss */
   .sort-label .sort-selection:hover, .lg-nav .lg-section:hover, footer a:hover {
@@ -35,6 +39,7 @@ body {
 
 /* line 40, ../scss/utils/_extends.scss */
 .lg-track {
+  -webkit-transition: background-color .4s ease-out;
   transition: background-color .4s ease-out; }
   /* line 42, ../scss/utils/_extends.scss */
   .lg-track:hover {
@@ -67,8 +72,15 @@ ul {
 
 /* line 29, ../scss/base/_base.scss */
 figure {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
   flex: 1; }
 
 /* line 34, ../scss/base/_base.scss */
@@ -121,8 +133,14 @@ a {
 
 /* line 20, ../scss/layout/_containers.scss */
 .search-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   height: 60px;
   background-color: #dde1df; }
@@ -143,8 +161,12 @@ a {
 
 /* line 42, ../scss/layout/_containers.scss */
 .card-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -ms-flex-pack: distribute;
   justify-content: space-around;
   max-width: 1200px;
   margin: 0 auto 50px; }
@@ -154,7 +176,11 @@ a {
 
 /* line 53, ../scss/layout/_containers.scss */
 .lg-nav-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
   align-items: flex-start;
   position: fixed;
   width: 540px;
@@ -172,8 +198,14 @@ a {
 
 /* line 7, ../scss/layout/_header.scss */
 header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   height: 72px;
   background-color: #f1f3f3; }
@@ -212,6 +244,10 @@ header {
   border: none;
   padding: 0 15px; }
   /* line 17, ../scss/layout/_search.scss */
+  #search::-webkit-input-placeholder {
+    color: #545454; }
+  #search:-ms-input-placeholder {
+    color: #545454; }
   #search::placeholder {
     color: #545454; }
 
@@ -251,7 +287,12 @@ header {
 
 /* line 5, ../scss/layout/_cards.scss */
 li.card {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   width: 290px;
   font-size: 1rem;
@@ -281,14 +322,21 @@ li.card {
   position: relative; }
   /* line 29, ../scss/layout/_cards.scss */
   .image-overlay .btn-overlay {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    -webkit-transition: background 0.5s ease;
     transition: background 0.5s ease; }
   /* line 38, ../scss/layout/_cards.scss */
   .image-overlay:hover .btn-overlay {
@@ -300,6 +348,7 @@ li.card {
     border: 2px solid #a8d57b;
     padding: 12px 24px;
     opacity: 0;
+    -webkit-transition: opacity 0.4s ease, background-color 0.4s ease;
     transition: opacity 0.4s ease, background-color 0.4s ease; }
     /* line 48, ../scss/layout/_cards.scss */
     .image-overlay .btn-info:hover {
@@ -433,8 +482,14 @@ li.card {
 
 /* line 136, ../scss/layout/_lightbox.scss */
 .lg-track {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   padding: 1px 0; }
   /* line 140, ../scss/layout/_lightbox.scss */
@@ -455,6 +510,8 @@ li.card {
         color: #b3bcb8; } }
   /* line 151, ../scss/layout/_lightbox.scss */
   .lg-track .lg-track-name {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
     flex: 1;
     font-size: 0.8rem;
     font-weight: 300;
@@ -478,12 +535,18 @@ li.card {
 
 /* line 169, ../scss/layout/_lightbox.scss */
 .lg-comment {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
   align-items: flex-start;
   margin-top: 25px;
   padding-right: 5px; }
   /* line 173, ../scss/layout/_lightbox.scss */
   .lg-comment div {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
     flex: 1; }
   /* line 176, ../scss/layout/_lightbox.scss */
   .lg-comment .lg-user-image {
@@ -503,7 +566,11 @@ li.card {
 
 /* line 188, ../scss/layout/_lightbox.scss */
 .lg-comment-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   border-bottom: 1px solid #6fa938;
   padding-bottom: 4px; }
@@ -529,8 +596,14 @@ li.card {
 
 /* line 7, ../scss/layout/_footer.scss */
 footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   height: 72px;
   background-color: #f1f3f3;
@@ -538,5 +611,3 @@ footer {
   /* line 12, ../scss/layout/_footer.scss */
   footer .copyright-info {
     text-align: right; }
-
-/*# sourceMappingURL=styles.css.map */
