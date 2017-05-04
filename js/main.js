@@ -16,6 +16,13 @@ const wordsMin = 10;
 const wordsMax = 25;
 let lgDynamicEl = []; // Dynamic LightGallery dataset
 
+// Keypress function on the search field that triggers the search button's click event when pressing enter
+$searchField.on('keypress', function (e) {
+  if (e.which == 13) {
+    $searchBtn.click();
+  }
+});
+
 // Click function to submit search term to Spotify API via AJAX request
 $searchBtn.on('click', function () {
   let searchValue = $searchField.val();
