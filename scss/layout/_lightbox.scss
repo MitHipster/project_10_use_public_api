@@ -6,6 +6,8 @@
   overflow: hidden; // remove scrollbars from main page
 }
 
+//---------- Background -----------
+
 .lg-backdrop {
   background-color: $color-bg-body;
 }
@@ -80,6 +82,7 @@
 //-------- Album details ----------
 
 .lg-album-details {
+  padding-top: 20px;
   span {
     @include font-settings(0.8rem, 400, $color-text-gray);
     @include mq('mobile') {

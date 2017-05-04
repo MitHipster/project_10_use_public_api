@@ -48,6 +48,17 @@
   }
 }
 
+//---------- Navigation -----------
+
+.lg-nav-container {
+  @include display-flex($align: flex-start);
+  position: fixed;
+  width: 540px;
+  height: 30px;
+  z-index: 10000;
+  background-color: $color-bg-body;
+}
+
 //------------ Tracks -------------
 
 .lg-track-container {

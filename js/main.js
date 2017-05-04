@@ -303,8 +303,9 @@ let albumObjArray = (albums) => {
     commentList = albumComments(album.users);
     obj = {
       'src': coverUrl,
-      'subHtml': 
-        `<div class="lg-album-details">
+      'subHtml':
+        `<div class="lg-nav-container">Sections: <a href=#0>album</a> <a href=#0>tracks</a> <a href=#0>comments</a></div>
+        <div class="lg-album-details">
           <div class="lg-album-info">
             <p class="lg-album"><span>Album Title: </span>${album.name}</p>
             <p class="lg-artist"><span>Artist: </span>${artistName}</p>
