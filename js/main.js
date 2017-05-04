@@ -131,7 +131,6 @@ $cardContainer.on('click', '.btn-info', function (e) {
     });
     // Click function to select lightbox section
     $('.lg-section').on('click', function () {
-      console.log(true);
       // Remove active class if applicable and add back class on clicked link
       $('.lg-section').removeClass('active');
       $(this).addClass('active');
