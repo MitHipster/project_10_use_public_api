@@ -129,6 +129,15 @@ $cardContainer.on('click', '.btn-info', function (e) {
         mediaElement.load();
       }
     });
+    // Click function to select lightbox section
+    $('.lg-section').on('click', function () {
+      console.log(true);
+      // Remove active class if applicable and add back class on clicked link
+      $('.lg-section').removeClass('active');
+      $(this).addClass('active');
+    });
+    // Return focus to top of section after displaying another album
+    $('.lg-sub-html').scrollTop(0);
   }); // end LightGallery constructor
 }); // .btn-info click function
 
@@ -304,18 +313,28 @@ let albumObjArray = (albums) => {
     obj = {
       'src': coverUrl,
       'subHtml':
-        `<div class="lg-nav-container">Sections: <a href=#0>album</a> <a href=#0>tracks</a> <a href=#0>comments</a></div>
+        `<div class="lg-nav-container">
+          <p class="lg-nav">
+            <span>Sections: </span>
+            <a href="#album" class="lg-section active">album</a><span class="lg-forward-slash">&#47;</span>
+            <a href="#tracks" class="lg-section">tracks</a><span class="lg-forward-slash">&#47;</span>
+            <a href="#comments" class="lg-section">comments</a>
+          </p>
+        </div>
         <div class="lg-album-details">
+          <span class="anchor" id="album"></span>
           <div class="lg-album-info">
             <p class="lg-album"><span>Album Title: </span>${album.name}</p>
             <p class="lg-artist"><span>Artist: </span>${artistName}</p>
             <p class="lg-label"><span>Label: </span>${album.label}</p>
             <p class="lg-release-date"><span>Released: </span>${albumRelease} (${album.album_type})</p>
+            <span class="anchor" id="tracks"></span>
             <p><span>Tracks: </span></p>
           </div>
           <ul class="lg-track-container">
             ${trackList}
           </ul>
+          <span class="anchor" id="comments"></span>
           <p><span>Comments: </span></p>
           <ul class="lg-comment-container">
             ${commentList}

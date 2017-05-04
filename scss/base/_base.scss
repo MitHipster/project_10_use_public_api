@@ -46,3 +46,12 @@ a {
   text-decoration: none;
   color: $color-text-dark;
 }
+
+// Span tag to offset fixed nav height in lightbox to correct album link 
+
+.anchor {
+  display: block;
+  height: $lg-nav-height; /* height of header */
+  margin-top: -$lg-nav-height; /* negative offset */
+  visibility: hidden;
+}

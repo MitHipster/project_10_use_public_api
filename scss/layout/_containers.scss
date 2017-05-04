@@ -54,7 +54,7 @@
   @include display-flex($align: flex-start);
   position: fixed;
   width: 540px;
-  height: 30px;
+  height: $lg-nav-height;
   z-index: 10000;
   background-color: $color-bg-body;
 }

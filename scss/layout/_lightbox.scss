@@ -12,6 +12,30 @@
   background-color: $color-bg-body;
 }
       
+//---------- Navigation -----------
+
+.lg-nav {
+  span {
+    @include font-settings(0.8rem, 400, $color-text-gray);
+    @include mq('mobile') {
+      font-size: 0.9rem;
+    }
+    &.lg-forward-slash {
+      padding: 0 5px;
+    }
+  }
+  .lg-section {
+    @include font-settings(0.9rem, 300, $color-text-light);
+    @extend %hover-link;
+    &.active {
+      color: $color-bg-button;
+    }
+    @include mq('mobile') {
+      font-size: 1rem;
+    }
+  }
+}
+
 //--------- Main Styling ----------
 
 .lg-custom.lg-outer {
@@ -146,6 +170,9 @@
   @include display-flex($align: flex-start);
   margin-top: $edge-lg;
   padding-right: 5px;
+  div {
+    flex: 1;
+  }
   .lg-user-image {
     margin-right: $edge-sm;
   }
