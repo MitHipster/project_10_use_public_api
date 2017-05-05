@@ -42,7 +42,7 @@
   .lg-actions {
     .lg-next,
     .lg-prev {
-      top: 25%;
+      top: 24%;
       background-color: $color-bg-button;
       color: $color-text-light;
       @extend %hover-btn;
@@ -67,9 +67,10 @@
     }
   }
   .lg-sub-html {
-    position: absolute;
+//    position: absolute; /* Attempt to fix disappearing section nav bar */
     z-index: 1080;
-    top: 43%;
+    max-width: 560px;
+    top: 41.5%;
     overflow-y: scroll;
     background-color: $color-bg-body;
     color: $color-text-light;
@@ -87,7 +88,7 @@
   .lg-item,
   .lg-img-wrap {
     &:before {
-      height: 25%;
+      height: 24%;
       @include mq('mobile') {
         height: 28.5%;
       }

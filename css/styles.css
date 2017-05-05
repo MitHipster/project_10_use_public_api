@@ -302,7 +302,7 @@ li.card {
   margin: 0 0 15px; }
   /* line 11, ../scss/layout/_cards.scss */
   li.card .image-overlay {
-    margin-bottom: 15px; }
+    margin: 0 auto 15px; }
   /* line 14, ../scss/layout/_cards.scss */
   li.card .card-name {
     line-height: 1.1rem;
@@ -393,7 +393,7 @@ li.card {
 /* line 43, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-actions .lg-next,
 .lg-custom.lg-outer .lg-actions .lg-prev {
-  top: 25%;
+  top: 24%;
   background-color: #6fa938;
   color: #f1f3f3; }
   @media (min-width: 480px) {
@@ -416,9 +416,9 @@ li.card {
     color: #f1f3f3; }
 /* line 69, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-sub-html {
-  position: absolute;
   z-index: 1080;
-  top: 43%;
+  max-width: 560px;
+  top: 41.5%;
   overflow-y: scroll;
   background-color: #1e2e35;
   color: #f1f3f3;
@@ -429,43 +429,43 @@ li.card {
     /* line 69, ../scss/layout/_lightbox.scss */
     .lg-custom.lg-outer .lg-sub-html {
       top: 50.25%; } }
-/* line 83, ../scss/layout/_lightbox.scss */
+/* line 84, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer #lg-counter {
   font-size: 1rem;
   font-weight: 400;
   color: #545454;
   padding-top: 16px; }
-/* line 89, ../scss/layout/_lightbox.scss */
+/* line 90, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-item:before,
 .lg-custom.lg-outer .lg-img-wrap:before {
-  height: 25%; }
+  height: 24%; }
   @media (min-width: 480px) {
-    /* line 89, ../scss/layout/_lightbox.scss */
+    /* line 90, ../scss/layout/_lightbox.scss */
     .lg-custom.lg-outer .lg-item:before,
     .lg-custom.lg-outer .lg-img-wrap:before {
       height: 28.5%; } }
-/* line 97, ../scss/layout/_lightbox.scss */
+/* line 98, ../scss/layout/_lightbox.scss */
 .lg-custom.lg-outer .lg-img-wrap .lg-image {
   max-width: 300px; }
   @media (min-width: 480px) {
-    /* line 97, ../scss/layout/_lightbox.scss */
+    /* line 98, ../scss/layout/_lightbox.scss */
     .lg-custom.lg-outer .lg-img-wrap .lg-image {
       max-width: 400px; } }
 
-/* line 108, ../scss/layout/_lightbox.scss */
+/* line 109, ../scss/layout/_lightbox.scss */
 .lg-album-details {
   padding-top: 20px; }
-  /* line 110, ../scss/layout/_lightbox.scss */
+  /* line 111, ../scss/layout/_lightbox.scss */
   .lg-album-details span {
     font-size: 0.8rem;
     font-weight: 400;
     color: #b3bcb8; }
     @media (min-width: 480px) {
-      /* line 110, ../scss/layout/_lightbox.scss */
+      /* line 111, ../scss/layout/_lightbox.scss */
       .lg-album-details span {
         font-size: 0.9rem; } }
 
-/* line 121, ../scss/layout/_lightbox.scss */
+/* line 122, ../scss/layout/_lightbox.scss */
 .lg-album-info p {
   font-size: 0.9rem;
   font-weight: 300;
@@ -473,14 +473,14 @@ li.card {
   margin: 0;
   padding: 10px 0 0; }
   @media (min-width: 480px) {
-    /* line 121, ../scss/layout/_lightbox.scss */
+    /* line 122, ../scss/layout/_lightbox.scss */
     .lg-album-info p {
       font-size: 1rem; } }
-/* line 129, ../scss/layout/_lightbox.scss */
+/* line 130, ../scss/layout/_lightbox.scss */
 .lg-album-info p:last-child {
   padding: 10px 0 10px; }
 
-/* line 136, ../scss/layout/_lightbox.scss */
+/* line 137, ../scss/layout/_lightbox.scss */
 .lg-track {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -492,23 +492,23 @@ li.card {
   -ms-flex-align: center;
   align-items: center;
   padding: 1px 0; }
-  /* line 140, ../scss/layout/_lightbox.scss */
+  /* line 141, ../scss/layout/_lightbox.scss */
   .lg-track p {
     padding-left: 8px;
     margin: 0; }
-  /* line 144, ../scss/layout/_lightbox.scss */
+  /* line 145, ../scss/layout/_lightbox.scss */
   .lg-track .lg-track-num {
     font-size: 0.8rem;
     font-weight: 400;
     color: #b3bcb8;
     width: 24px; }
     @media (min-width: 480px) {
-      /* line 144, ../scss/layout/_lightbox.scss */
+      /* line 145, ../scss/layout/_lightbox.scss */
       .lg-track .lg-track-num {
         font-size: 0.9rem;
         font-weight: 300;
         color: #b3bcb8; } }
-  /* line 151, ../scss/layout/_lightbox.scss */
+  /* line 152, ../scss/layout/_lightbox.scss */
   .lg-track .lg-track-name {
     -webkit-box-flex: 1;
     -ms-flex: 1;
@@ -517,23 +517,23 @@ li.card {
     font-weight: 300;
     color: inherit; }
     @media (min-width: 480px) {
-      /* line 151, ../scss/layout/_lightbox.scss */
+      /* line 152, ../scss/layout/_lightbox.scss */
       .lg-track .lg-track-name {
         font-size: 0.9rem; } }
-  /* line 158, ../scss/layout/_lightbox.scss */
+  /* line 159, ../scss/layout/_lightbox.scss */
   .lg-track .lg-track-duration {
     font-size: 0.8rem;
     font-weight: 400;
     color: #b3bcb8;
     padding-right: 5px; }
     @media (min-width: 480px) {
-      /* line 158, ../scss/layout/_lightbox.scss */
+      /* line 159, ../scss/layout/_lightbox.scss */
       .lg-track .lg-track-duration {
         font-size: 0.9rem;
         font-weight: 300;
         color: #b3bcb8; } }
 
-/* line 169, ../scss/layout/_lightbox.scss */
+/* line 170, ../scss/layout/_lightbox.scss */
 .lg-comment {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -543,28 +543,28 @@ li.card {
   align-items: flex-start;
   margin-top: 25px;
   padding-right: 5px; }
-  /* line 173, ../scss/layout/_lightbox.scss */
+  /* line 174, ../scss/layout/_lightbox.scss */
   .lg-comment div {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1; }
-  /* line 176, ../scss/layout/_lightbox.scss */
+  /* line 177, ../scss/layout/_lightbox.scss */
   .lg-comment .lg-user-image {
     margin-right: 15px;
     border-radius: 50%; }
-  /* line 180, ../scss/layout/_lightbox.scss */
+  /* line 181, ../scss/layout/_lightbox.scss */
   .lg-comment .lg-user-comment {
     font-size: 0.8rem;
     font-weight: 300;
     color: inherit; }
     @media (min-width: 480px) {
-      /* line 180, ../scss/layout/_lightbox.scss */
+      /* line 181, ../scss/layout/_lightbox.scss */
       .lg-comment .lg-user-comment {
         font-size: 0.9rem;
         font-weight: 200;
         color: inherit; } }
 
-/* line 188, ../scss/layout/_lightbox.scss */
+/* line 189, ../scss/layout/_lightbox.scss */
 .lg-comment-header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -574,7 +574,7 @@ li.card {
   justify-content: space-between;
   border-bottom: 1px solid #6fa938;
   padding-bottom: 4px; }
-  /* line 192, ../scss/layout/_lightbox.scss */
+  /* line 193, ../scss/layout/_lightbox.scss */
   .lg-comment-header .lg-user-name,
   .lg-comment-header .lg-posted {
     margin: 0;
@@ -582,13 +582,13 @@ li.card {
     font-weight: 400;
     color: #b3bcb8; }
     @media (min-width: 480px) {
-      /* line 192, ../scss/layout/_lightbox.scss */
+      /* line 193, ../scss/layout/_lightbox.scss */
       .lg-comment-header .lg-user-name,
       .lg-comment-header .lg-posted {
         font-size: 0.9rem;
         font-weight: 300;
         color: #b3bcb8; } }
-  /* line 200, ../scss/layout/_lightbox.scss */
+  /* line 201, ../scss/layout/_lightbox.scss */
   .lg-comment-header img {
     width: 14px;
     height: 14px;
