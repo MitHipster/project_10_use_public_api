@@ -133,7 +133,8 @@ $searchBtn.on('click', function () {
             'Authorization': 'Bearer ' + accessToken
           },
           data: {
-            ids: albumList
+            ids: albumList,
+            market: 'US'
           },
           success: (results) => {
             // Populate global array with returned albums

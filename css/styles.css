@@ -1,15 +1,15 @@
 body {
   font-family: "Montserrat", sans-serif; }
 
-#btn-login, #search, #btn-search {
+#search, #btn-search, #btn-login {
   transition: box-shadow .4s ease-out; }
-  #btn-login:focus, #search:focus, #btn-search:focus {
+  #search:focus, #btn-search:focus, #btn-login:focus {
     box-shadow: inset 0 0 5px #1e2e35; }
 
-#btn-login, #btn-search, .lg-custom.lg-outer .lg-actions .lg-next,
+#btn-search, #btn-login, .lg-custom.lg-outer .lg-actions .lg-next,
 .lg-custom.lg-outer .lg-actions .lg-prev, .lg-custom.lg-outer .lg-toolbar .lg-icon {
   transition: background-color .4s ease-out; }
-  #btn-login:hover, #btn-search:hover, .lg-custom.lg-outer .lg-actions .lg-next:hover,
+  #btn-search:hover, #btn-login:hover, .lg-custom.lg-outer .lg-actions .lg-next:hover,
   .lg-custom.lg-outer .lg-actions .lg-prev:hover, .lg-custom.lg-outer .lg-toolbar .lg-icon:hover {
     color: #f1f3f3;
     background-color: #88c54f; }
@@ -75,6 +75,38 @@ a {
   /* negative offset */
   visibility: hidden; }
 
+#search {
+  height: 40px;
+  width: 75%;
+  max-width: 400px;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #545454;
+  background-color: #f1f3f3;
+  outline: none;
+  border: none;
+  padding: 0 15px; }
+  #search::placeholder {
+    color: #545454; }
+
+#btn-search {
+  width: 40px;
+  height: 40px;
+  background-color: #6fa938;
+  outline: none;
+  cursor: pointer;
+  border: none; }
+
+#btn-login {
+  font-size: 0.875rem;
+  background-color: #6fa938;
+  color: #f1f3f3;
+  outline: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 50px; }
+
 .mejs__custom.mejs__container {
   min-width: 40px !important;
   max-width: 40px !important;
@@ -92,6 +124,9 @@ a {
   @media (min-width: 1024px) {
     .outer-container {
       padding: 25px; } }
+
+.title-container {
+  flex-grow: 1; }
 
 .search-container {
   display: flex;
@@ -140,55 +175,27 @@ header {
   justify-content: flex-start;
   align-items: center;
   height: 72px;
-  background-color: #f1f3f3; }
+  background-color: #f1f3f3;
+  padding-right: 10px; }
   header #logo-spotify {
     width: 72px;
     padding: 8px; }
   @media (min-width: 480px) {
     header {
-      padding-left: 10px; } }
+      padding-left: 10px;
+      padding-right: 20px; } }
   @media (min-width: 768px) {
     header {
-      padding-left: 20px; } }
+      padding-left: 20px;
+      padding-right: 30px; } }
   @media (min-width: 1024px) {
     header {
-      padding-left: 25px; } }
+      padding-left: 25px;
+      padding-right: 35px; } }
   header #title {
     font-size: 1.5rem;
     font-weight: 500;
     color: inherit; }
-
-#btn-login {
-  font-size: 0.9375rem;
-  background-color: #6fa938;
-  color: #f1f3f3;
-  outline: none;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 50px; }
-
-#search {
-  height: 40px;
-  width: 75%;
-  max-width: 400px;
-  font-size: 1rem;
-  font-weight: 300;
-  color: #545454;
-  background-color: #f1f3f3;
-  outline: none;
-  border: none;
-  padding: 0 15px; }
-  #search::placeholder {
-    color: #545454; }
-
-#btn-search {
-  width: 40px;
-  height: 40px;
-  background-color: #6fa938;
-  outline: none;
-  cursor: pointer;
-  border: none; }
 
 .sort-label {
   font-size: 0.9rem;

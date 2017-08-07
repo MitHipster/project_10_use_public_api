@@ -8,35 +8,24 @@ header {
   @include display-flex($justify: flex-start, $align: center);
   height: 72px;
   background-color: $color-bg-header;
+  padding-right: $edge-sm - 5px; // Shifts Log In button off right edge similar to logo distance off left edge
   #logo-spotify {
     width: 72px;
     padding: 8px;
   }
   @include mq('mobile') {
     padding-left: $edge-sm - 5px;
+    padding-right: $edge-sm + 5px; // See comment above
   }
   @include mq('tablet') {
     padding-left: $edge-med;
+    padding-right: $edge-med + 10px;
   }
   @include mq('desktop') {
     padding-left: $edge-lg;
+    padding-right: $edge-lg + 10px;
   }
   #title {
     @include font-settings(1.5rem, 500)
   }
-}
-
-//------------ Button -------------
-
-#btn-login {
-  font-size: 0.9375rem;
-  background-color: $color-bg-button;
-  color: $color-text-light;
-  outline: none;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 50px;
-  @extend %focus-state;
-  @extend %hover-btn;
 }

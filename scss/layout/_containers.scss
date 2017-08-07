@@ -15,6 +15,12 @@
   }
 }
 
+//------------ Title --------------
+
+.title-container {
+  flex-grow: 1;
+}
+
 //------------ Search -------------
 
 .search-container {
@@ -70,4 +76,3 @@
 .lg-comment-container {
   margin-bottom: 50px;
 }
-
