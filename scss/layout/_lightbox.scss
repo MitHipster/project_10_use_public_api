@@ -11,7 +11,7 @@
 .lg-backdrop {
   background-color: $color-bg-body;
 }
-      
+
 //---------- Navigation -----------
 
 .lg-nav {
@@ -49,7 +49,7 @@
       @include mq('mobile') {
         top: 28.5%;
       }
-      
+
     }
     .lg-next {
       right: $edge-sm - 5px;
@@ -175,6 +175,8 @@
     flex: 1;
   }
   .lg-user-image {
+    width: 48px;
+    height: 48px;
     margin-right: $edge-sm;
     border-radius: 50%;
   }

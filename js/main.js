@@ -19,9 +19,17 @@ const wordsMin = 10;
 const wordsMax = 25;
 let lgDynamicEl = []; // Dynamic LightGallery dataset
 let stateKey = 'spotify_auth_state';
+const messages = [
+  'There was an error during the authentication. Please try again.',
+  'You are logged in. Use the field above to search for albums by artist.',
+  'No match found. Please revise your search term.'
+];
 
 $(document).ready(function() {
-
+  /** Thanks to José Manuel Pérez Implicit Grant
+  ** example on GitHub
+  */
+  
   /**
    * Obtains parameters from the hash of the URL
    * @return Object
@@ -58,11 +66,12 @@ $(document).ready(function() {
       storedState = localStorage.getItem(stateKey);
 
   if (accessToken && (state == null || state !== storedState)) {
-    alert('There was an error during the authentication');
+    $cardContainer.append(`<p id="message">${messages[0]}</p>`);
   } else {
     // localStorage.removeItem(stateKey);
     if (accessToken) {
       $loginBtn.hide();
+      $cardContainer.append(`<p id="message">${messages[1]}</p>`);
     } else {
       $loginBtn.show();
     }
@@ -165,7 +174,7 @@ $searchBtn.on('click', function () {
       // else diplay a message that no match was found
       } else {
         $sortContainer.hide(0);
-        $cardContainer.append('<p id="no-match">No match found. Please revise your search term.</p>');
+        $cardContainer.append(`<p id="message">${messages[2]}</p>`);
       }
     } // end first Spotify success callback
   }); // end first Spotify AJAX request
@@ -256,7 +265,7 @@ let addCommentBlock = (albums, users) => {
       let commentText = Lorem.prototype.createText(words, 3);
       // Create user object
       let obj = {
-        image: users[user].picture.thumbnail,
+        image: users[user].picture.large,
         name: users[user].login.username,
         comment: sentence(commentText)
       };

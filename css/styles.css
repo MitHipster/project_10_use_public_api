@@ -152,7 +152,7 @@ a {
   justify-content: space-around;
   max-width: 1200px;
   margin: 0 auto 50px; }
-  .card-container #no-match {
+  .card-container #message {
     color: #b3bcb8; }
 
 .lg-nav-container {
@@ -407,6 +407,8 @@ li.card {
   .lg-comment div {
     flex: 1; }
   .lg-comment .lg-user-image {
+    width: 48px;
+    height: 48px;
     margin-right: 15px;
     border-radius: 50%; }
   .lg-comment .lg-user-comment {
