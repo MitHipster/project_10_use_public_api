@@ -26,3 +26,17 @@ header {
   }
 }
 
+//------------ Button -------------
+
+#btn-login {
+  font-size: 0.9375rem;
+  background-color: $color-bg-button;
+  color: $color-text-light;
+  outline: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 50px;
+  @extend %focus-state;
+  @extend %hover-btn;
+}

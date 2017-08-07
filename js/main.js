@@ -2,11 +2,14 @@
 /*global window, console, $, jQuery, Lorem, alert*/
 
 const $cardContainer =  $('.card-container');
+const $loginBtn = $('#btn-login');
 const $searchField = $('#search');
 const $searchBtn = $('#btn-search');
 const $searchTerm = $('#search-term');
 const $sortContainer = $('.sort-container');
 const $sortInput = $('.sort-selection');
+const loginBtn = 'btn-login';
+let accessToken = '';
 let searchResults = [];
 let randomUsers = [];
 const randomUserCnt = 250;
@@ -15,6 +18,77 @@ const commentsMax = 10;
 const wordsMin = 10;
 const wordsMax = 25;
 let lgDynamicEl = []; // Dynamic LightGallery dataset
+let stateKey = 'spotify_auth_state';
+
+$(document).ready(function() {
+
+  /**
+   * Obtains parameters from the hash of the URL
+   * @return Object
+   */
+  function getHashParams() {
+    let hashParams = {};
+    let e, r = /([^&;=]+)=?([^&;]*)/g,
+        q = window.location.hash.substring(1);
+    while (e = r.exec(q)) {
+       hashParams[e[1]] = decodeURIComponent(e[2]);
+    }
+    return hashParams;
+  }
+
+  /**
+   * Generates a random string containing numbers and letters
+   * @param  {number} length The length of the string
+   * @return {string} The generated string
+   */
+  function generateRandomString(length) {
+    let text = '';
+    let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    for (let i = 0; i < length; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
+  }
+
+  let params = getHashParams();
+
+  accessToken = params.access_token;
+  let state = params.state,
+      storedState = localStorage.getItem(stateKey);
+
+  if (accessToken && (state == null || state !== storedState)) {
+    alert('There was an error during the authentication');
+  } else {
+    // localStorage.removeItem(stateKey);
+    if (accessToken) {
+      $loginBtn.hide();
+    } else {
+      $loginBtn.show();
+    }
+
+    document.getElementById(loginBtn).addEventListener('click', function() {
+
+      let client_id = '75dcf1660ea04c6ba07aaafb9b5735a5'; // Your client id
+      let redirect_uri = 'http://127.0.0.1:3000/'; // Your redirect uri
+
+      let state = generateRandomString(16);
+
+      localStorage.setItem(stateKey, state);
+      let scope = 'user-top-read';
+
+      let url = 'https://accounts.spotify.com/authorize';
+      url += '?response_type=token';
+      url += '&client_id=' + encodeURIComponent(client_id);
+      url += '&scope=' + encodeURIComponent(scope);
+      url += '&redirect_uri=' + encodeURIComponent(redirect_uri);
+      url += '&state=' + encodeURIComponent(state);
+
+      window.location = url;
+
+    }, false);
+  }
+});
 
 // Keypress function on the search field that triggers the search button's click event when pressing enter
 $searchField.on('keypress', function (e) {
@@ -31,6 +105,9 @@ $searchBtn.on('click', function () {
   // AJAX request to retrieve search results from Spotify
   $.ajax({
     url: 'https://api.spotify.com/v1/search',
+    headers: {
+      'Authorization': 'Bearer ' + accessToken
+    },
     data: {
       q: `artist:"${searchValue}"`,
       type: 'album',
@@ -48,10 +125,13 @@ $searchBtn.on('click', function () {
         $sortInput.removeClass('active');
         // Clear search field
         $searchField.val('');
-        
+
         // AJAX request to retrieve detailed album information based on earlier search results
         $.ajax({
           url: 'https://api.spotify.com/v1/albums/',
+          headers: {
+            'Authorization': 'Bearer ' + accessToken
+          },
           data: {
             ids: albumList
           },
@@ -150,7 +230,7 @@ $cardContainer.on('click', '.btn-info', function (e) {
 // Build a comma-separated list of the album IDs for subsequent AJAX request
 let albumIdList = (albums) => {
   let albumList = '';
-  
+
   $.each(albums, (i, album) => {
     albumList += (album.id + ',');
   }); // end each album iterator
@@ -188,7 +268,7 @@ let addCommentBlock = (albums, users) => {
 // Iterate over search results to create a card that holds the album information for each object
 let albumResults = (albums) => {
   let artistName = '';
-  
+
   $.each(albums, (i, album) => {
     // Get medium-sized image with height and width ~300px
     let coverUrl = album.images[1].url;
@@ -202,7 +282,7 @@ let albumResults = (albums) => {
   }); // end each album iterator
 }; // end albumResults function
 
-// Combine multiple artist names into a string 
+// Combine multiple artist names into a string
 let artistList = (artists) => {
   let artistNames = '';
 
@@ -231,7 +311,7 @@ let cardHtml = (i, coverUrl, albumName, artistName, releaseDate) => {
           <p class="card-artist">${artistName} (${releaseDate})</p>
         </figure>
       </li>`;
-  
+
   return html;
 }; // end cardHtml function
 
@@ -262,7 +342,7 @@ let trackHtml = (trackPreview, trackNum , trackName, trackDuration) => {
         <p class="lg-track-name">${trackName}</p>
         <p class="lg-track-duration">${trackDuration}</p>
       </li>`;
-  
+
   return html;
 }; // end trackHtml function
 
@@ -295,7 +375,7 @@ let commentHtml = (userImage, userName, userComment) => {
           <p class="lg-user-comment">${userComment}</p>
         </div>
       </li>`;
-  
+
   return html;
 }; // end commentHtml function
 
@@ -378,7 +458,7 @@ let msConvert = (duration) => {
   let minutes = parseInt((duration / (1000 * 60)) % 60);
 
   seconds = (seconds < 10) ? "0" + seconds : seconds;
-  
+
   return minutes + ":" + seconds;
 }; // end msConvert function
 
