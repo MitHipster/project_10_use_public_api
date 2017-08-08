@@ -142,6 +142,11 @@
     padding-left: 8px;
     margin: 0;
   }
+  .lg-not {
+    width: 40px;
+    height: 40px;
+    padding: 12px;
+  }
   .lg-track-num {
     @include font-settings(0.8rem, 400, $color-text-gray);
     width: 24px;
@@ -151,6 +156,7 @@
   }
   .lg-track-name {
     flex: 1;
+    line-height: 1.2;
     @include font-settings(0.8rem, 300);
     @include mq('mobile') {
       font-size: 0.9rem;

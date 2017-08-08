@@ -22,6 +22,7 @@ let stateKey = 'spotify_auth_state';
 const messages = [
   'There was an error during the authentication. Please try again.',
   'You are logged in. Use the field above to search for albums by artist.',
+  'Please log in to Spotify to grant this site access.',
   'No match found. Please revise your search term.'
 ];
 
@@ -79,12 +80,13 @@ $(document).ready(function() {
     // Else there is no access token and user must log in
     } else {
       $loginBtn.show();
+      $cardContainer.append(`<p id="message">${messages[2]}</p>`);
     }
     // Log in click event that directs user to spotify to authenticate then redirects back to site, supplying an access token and state
     document.getElementById(loginBtn).addEventListener('click', function() {
 
       let client_id = '75dcf1660ea04c6ba07aaafb9b5735a5'; // Your client id
-      let redirect_uri = 'http://127.0.0.1:3000/'; // Your redirect uri
+      let redirect_uri = 'https://mithipster.github.io/project_10_use_public_api/'; // Your redirect uri
 
       let state = generateRandomString(16);
 
@@ -179,7 +181,7 @@ $searchBtn.on('click', function () {
       // else diplay a message that no match was found
       } else {
         $sortContainer.hide(0);
-        $cardContainer.append(`<p id="message">${messages[2]}</p>`);
+        $cardContainer.append(`<p id="message">${messages[3]}</p>`);
       }
     } // end first Spotify success callback
   }); // end first Spotify AJAX request
@@ -350,11 +352,15 @@ let albumTracks = (tracks) => {
 // Function to generate the track HTML with preview link, name, number and duration
 let trackHtml = (trackPreview, trackNum , trackName, trackDuration) => {
   // Create the HTML for album track using a template literal
+  let trackSample = '';
+  if (!trackPreview) {
+    trackSample = '<img src="icons/icon-not.svg" class="lg-not" alt="Not available">';
+  } else {
+    trackSample = `<audio controls class="lg-track-sample mejs__custom" src="${trackPreview}"></audio>`;
+  }
   let html =
       `<li class="lg-track">
-        <audio controls class="lg-track-sample mejs__custom"
-          src="${trackPreview}">
-        </audio>
+        ${trackSample}
         <p class="lg-track-num">${trackNum}</p>
         <p class="lg-track-name">${trackName}</p>
         <p class="lg-track-duration">${trackDuration}</p>

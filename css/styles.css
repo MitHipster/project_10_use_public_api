@@ -229,12 +229,12 @@ li.card {
   li.card .image-overlay {
     margin: 0 auto 15px; }
   li.card .card-name {
-    line-height: 1.1rem;
+    line-height: 1.2rem;
     border-top: 2px solid #a9386f;
     margin-top: auto;
     padding-top: 7.5px; }
   li.card .card-artist {
-    line-height: 1rem;
+    line-height: 1.1rem;
     font-size: 0.9rem;
     font-weight: 300;
     color: #b3bcb8;
@@ -370,6 +370,10 @@ li.card {
   .lg-track p {
     padding-left: 8px;
     margin: 0; }
+  .lg-track .lg-not {
+    width: 40px;
+    height: 40px;
+    padding: 12px; }
   .lg-track .lg-track-num {
     font-size: 0.8rem;
     font-weight: 400;
@@ -382,6 +386,7 @@ li.card {
         color: #b3bcb8; } }
   .lg-track .lg-track-name {
     flex: 1;
+    line-height: 1.2;
     font-size: 0.8rem;
     font-weight: 300;
     color: inherit; }
