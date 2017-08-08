@@ -29,11 +29,12 @@ $(document).ready(function() {
   /** Thanks to José Manuel Pérez Implicit Grant
   ** example on GitHub
   */
-  
+
   /**
    * Obtains parameters from the hash of the URL
    * @return Object
    */
+   // Function to get token and other hash information from URL
   function getHashParams() {
     let hashParams = {};
     let e, r = /([^&;=]+)=?([^&;]*)/g,
@@ -49,6 +50,7 @@ $(document).ready(function() {
    * @param  {number} length The length of the string
    * @return {string} The generated string
    */
+   // Function to generate a random string used to increase authentication reliability by setting optional state parameter
   function generateRandomString(length) {
     let text = '';
     let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -64,18 +66,21 @@ $(document).ready(function() {
   accessToken = params.access_token;
   let state = params.state,
       storedState = localStorage.getItem(stateKey);
-
+  // If access token exists, but state is missing, show authentication error message
   if (accessToken && (state == null || state !== storedState)) {
     $cardContainer.append(`<p id="message">${messages[0]}</p>`);
+  // Else hide log in button and show authentication successful message
   } else {
+    // If access token and state exists, hide log in button and show authentication successful message
     // localStorage.removeItem(stateKey);
     if (accessToken) {
       $loginBtn.hide();
       $cardContainer.append(`<p id="message">${messages[1]}</p>`);
+    // Else there is no access token and user must log in
     } else {
       $loginBtn.show();
     }
-
+    // Log in click event that directs user to spotify to authenticate then redirects back to site, supplying an access token and state
     document.getElementById(loginBtn).addEventListener('click', function() {
 
       let client_id = '75dcf1660ea04c6ba07aaafb9b5735a5'; // Your client id
@@ -330,6 +335,8 @@ let albumTracks = (tracks) => {
   let html = '';
   $.each(tracks, (i, track) => {
     let trackPreview = track.preview_url;
+    // If track prview null, set to empty string.
+    if (!trackPreview) trackPreview = '';
     let trackNum = track.track_number;
     let trackName = track.name;
     let trackDuration = msConvert(track.duration_ms);
